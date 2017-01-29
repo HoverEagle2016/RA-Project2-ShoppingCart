@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+ 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="src/css/reset.css">
+ 	<link rel="stylesheet" type="text/css" href="src/css/style.css">
+ 	<link rel="stylesheet" type="text/css" href="src/css/owl.carousel.min.css">
+ 	<link rel="stylesheet" type="text/css" href="src/css/owl.theme.default.min.css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="dist/minify.css"> -->
+	<script src="https://use.fontawesome.com/b6d7953a77.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="src/js/owl.carousel.min.js"></script>  	
+	<script type="text/javascript" src="src/js/app.js"></script>
+	<script type="text/javascript" src="src/js/DataParse.js"></script>
+	<!-- <script type="text/javascript">
+		window.addEventListener("load", init, false);
+	</script> -->
+	<title>ALoha</title>
+ </head>
+ <body>
+	  <header class="position-fixed flex flex-wrap">
+			<div class= "logoWidth">
+				<img class="width-med margin-logo" src="assets/images/aloha-logo.svg" alt="img">
+			</div>
+	  		<div class="flex menu menuWidth menuOrder">
+	  			<p class="menuItem text-center">ABOUT</p>
+	  			<p class="menuItem text-center">SHOP</p>
+	  			<p class="menuItem text-center">FEATURED</p>
+	  			<p class="menuItem text-center">UPDATES</p>
+	  		</div>
+	  		<div class="logoWidth position-rel">
+		  		<img class="cartImg position-abs width-sml" src="assets/images/cart-icon.svg" alt="check-out cart">
+		  		<input id="Qty" class="position-abs cartQty background-red color-white text-center" type="text" value=0>
+	  		</div>
+	  </header>
+	 
+	  <!-- Banner section -->
+	  <section class="flex banner background-repeat flex-center">
+	 	<div class="banner-text text-center"> 
+	 		<h5 class="text-shadow font-med font-bold padding-lrg color-white">
+	 			NEW COLLECTION
+		 	</h5>
+		 	<h1 class="text-shadow font-lrg color-white">
+		 		Spring/Summer 2017
+		 	</h1>	
+		</div> 	
+	  </section>
+	  <!-- Call To Action -->
+	  <section>
+<div class="text-center margin-lrg">
+		 	<h3 class="font-PlayfairI font-med text-align padding-lrg">
+		  		Hand-Crafted <span class="font-bold font-Playfair">Styles</span>
+		  	</h3>
+		  	<p class="body-paragraph padding-lf-rt">
+		  		Aloha Apparel Co. sells only the finest ready-to-travel clothing. Browse our current selection of products or sign-uo for updates below.
+		  	</p>
+		 </div>
+		 <div class="category flex flex-column color-white">
+			<div class="men flex flex-wrap">
+				<div class="mensDiv category-background flex flex-center itemLrg itemMargin">
+					<h3>MEN'S</h3>
+				</div>
+				<div class="trendsDiv category-background flex flex-center itemSml itemMargin">
+					<h3>TRENDS</h3>
+				</div>
+				<div class="glassDiv category-background flex flex-center itemSml itemMargin">
+					<h3>GLASSES</h3>
+				</div>
+			</div>
+			<div class="women flex flex-wrap">
+				<div class="saleDiv category-background flex flex-center itemSml itemMargin">
+					<h3>SALE</h3>
+				</div>
+
+				<div class="bagsDiv category-background flex flex-center itemSml itemMargin">
+					<h3>BAGS</h3>
+				</div>
+
+				<div class="womenDiv category-background flex flex-center itemLrg itemMargin">
+					<h3>WOMEN'S</h3>
+				</div>
+			</div>
+		</div>
+
+	  	<h3 class="font-PlayfairI font-med text-center padding-lrg">
+	  		Most-Loved <span class="font-Playfair font-bold">Products</span>
+	  	</h3>
+
+
+
+	   <div id="productList" class="owl-carousel owl-theme clear-fix">
+
+		  	<!-- <div id="product1" data-sku="" class="product text-center">
+		  		<img class="productImg" src="assets/images/stretch-knit-dress.jpg" alt="knit-dress">
+		  		<p class="manufacturer"> Dell</p>
+		  		
+		  		<h4 class="productName lineHeight-lrg">Dell - Latitude 14" Refurbished Laptop - Intel Core i5</h4>
+		  		<p class="productPrice">$169.00</p>
+		  		<div>
+		  			<button>Quick View</button>
+		  			<button class="shopBtn color-white">Add to Cart</button>	
+		  		</div>
+		  		
+		  	</div>
+		  	<div class="product text-center">
+		  		<img class="productImg" src="assets/images/cotton-blue-shirt.jpg" alt="cotton-shirt">
+		  		<p class="productType">SHIRTS</p>
+		  		<h4 class="productName lineHeight-lrg">Cotton Blue Shirts</h4>
+		  		<p class="productPrice">$89.00</p>
+		  		<button class="shopBtn color-white">Add to Cart</button>
+		  	</div>
+		  	<div class="product text-center">
+		  		<img class="productImg" src="assets/images/checked-stretch-dress.jpg" alt="checked-stretch-dress">
+		  		<p class="productType">DREESSES</p>
+		  		<h4 class="productName lineHeight-lrg">Checked Stretch Dress</h4>
+		  		<p class="productPrice">$129.00</p>
+		  		<button class="shopBtn color-white">Add to Cart</button>
+		  	</div>
+		  	<div class="product text-center">
+		  		<img class="productImg" src="assets/images/blue-hipster-backpack.jpg" alt="backpack">
+		  		<p class="productType">BAGS</p>
+		  		<h4 class="productName lineHeight-lrg">Blue Hipster Backpack</h4>
+		  		<p class="productPrice">$69.00</p>
+		  		<button class="shopBtn color-white">Add to Cart</button>
+	  		</div>
+	  		<div class="product text-center">
+		  		<img class="productImg" src="assets/images/demin-overall-shorts.jpg" alt="knit-dress">
+		  		<p class="productType">DREESSES</p>
+		  		<h4 class="productName lineHeight-lrg">Demin Overal Shorts</h4>
+		  		<p class="productPrice">$369.00</p>
+		  		<button class="shopBtn color-white">Add to Cart</button>
+		  	</div>
+		  	<div class="product text-center">
+		  		<img class="productImg" src="assets/images/pink-dotted-dress.jpg" alt="cotton-shirt">
+		  		<p class="productType">SHIRTS</p>
+		  		<h4 class="productName lineHeight-lrg">Pink Dotted Dress</h4>
+		  		<p class="productPrice">$299.00</p>
+		  		<button class="shopBtn color-white">Add to Cart</button>
+		  	</div>
+		  	<div class="product text-center">
+		  		<img class="productImg" src="assets/images/cotton-yellow-tshirt.jpg" alt="checked-stretch-dress">
+		  		<p class="productType">DREESSES</p>
+		  		<h4 class="productName lineHeight-lrg">Cotton Yellow TShirt</h4>
+		  		<p class="productPrice">$229.00</p>
+		  		<button class="shopBtn color-white">Add to Cart</button>
+		  	</div>
+		  	<div class="product text-center">
+		  		<img class="productImg" src="assets/images/blue-silk-dress.jpg" alt="backpack">
+		  		<p class="productType">BAGS</p>
+		  		<h4 class="productName lineHeight-lrg">Blue Silk Dress</h4>
+		  		<p class="productPrice">$129.00</p>
+		  		<button class="shopBtn color-white">Add to Cart</button>
+	  		</div> -->
+	  	</div>		
+	  </section>
+	  <!-- Subscription Section -->
+	  <section class="subscription text-center clear-fix color-white">
+	  		<h3 class="text-shadow font-PlayfairI font-med text-align padding-lrg">
+	  		Sign-Up for <span class="font-bold font-Playfair">Updates</span>
+		  	</h3>
+		  	<p class="body-paragraph padding-lf-rt">
+		  		Stay updated on our latest product releass, be first to find out about upcoming sales, and get free style tips from our blog. Unsubscribe at any time.
+		  	</p>
+		  	<form class="emailSection border-radius width-40perc clear-fix">
+		  		<input class="font-sml border-radius lineHeight-lrg border-none float-left width-70perc" type="text" placeholder="Your Email">
+			  	<input class="font-sml border-radius lineHeight-lrg border-none float-right width-25perc background-red color-white" type="submit" value="Subscribe">
+		  	</form>
+	  </section>
+   	</body>	
+	  <!-- Footer -->
+  	<footer class="clear-fix color-white background-footer">
+  		<div class="contact float-left contact-margin">
+  			 <p class ="lineHeight-regular">&copy; 2016 Aloha Apparel Co.<p>
+  			 <p>Powered by HTML and CSS</p>
+	  		<p class="color-white margin-top-bottom lineHeight-lrg">604-604-9999 <a class="color-white" href="mailto: jeremyxu89@gmail.com">jeremyxu89@gmail.com</a></p> 
+	  		<p class="color-address">642 Wellinton Street,</p>
+	  		<p class="color-address"> Toronto, Canada</p>
+	  		
+	  		<div class="mobileIcon">
+				<a class="color-white" href="http://www.google.ca">
+					<i class="MbIcon-padding fa fa-facebook-square" aria-hidden="true"></i>
+				</a>
+	  			<a class="color-white" href="http://www.google.ca">
+	  				<i class="MbIcon-padding fa fa-twitter" aria-hidden="true"></i>	
+	  			</a>
+	  			<a class="color-white" href="http://www.google.ca">
+	  				<i class="MbIcon-padding fa fa-instagram" aria-hidden="true"></i>	
+	  			</a>
+	  			<a class="color-white" href="http://www.google.ca">
+	  				<i class="MbIcon-padding fa fa-pinterest" aria-hidden="true"></i>	
+	  			</a>
+	  			<a class="color-white" href="http://www.google.ca">
+	  				<i class="MbIcon-padding fa fa-google-plus" aria-hidden="true"></i>	
+	  			</a>
+	  		</div>
+  		</div>
+  		<ul class="desktopIcon float-right contact-margin">
+  			<li class="lineHeight-regular">
+				<i class="fa fa-facebook-square" aria-hidden="true"><a class="padding-lrg color-white"href="http://www.google.ca">Facebook</a></i>  
+  			</li>
+  			<li class="lineHeight-regular">
+  				<i class="fa fa-twitter" aria-hidden="true"><a class="padding-lrg color-white"href="http://www.google.ca">Twitter</a></i>
+  			</li>
+  			<li class="lineHeight-regular">
+  				<i class="fa fa-instagram" aria-hidden="true"><a class="padding-lrg color-white"href="http://www.google.ca">Instrgam</a></i>
+  			</li>
+  			<li class="lineHeight-regular">
+  				<i class="fa fa-pinterest" aria-hidden="true"><a class="padding-lrg color-white"href="http://www.google.ca">Pinterest</a></i>
+  			</li>
+  			<li class="lineHeight-regular">
+  				<i class="fa fa-google-plus" aria-hidden="true"><a class="padding-lrg color-white"href="http://www.google.ca">Google+</a></i>
+  			</li>
+  		</ul>	
+  		
+  	</footer>
+	
+</html>
+
+  
