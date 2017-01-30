@@ -23,10 +23,11 @@ $("document").ready(function(){
     $("#Qty").hide();
 
     $(".shopBtn").on("click", function(){
+        
     $("#Qty").show();
     var inputField = parseInt($("#Qty").val());
-
     $("#Qty").val(inputField + 1);
+
     });
 
 
