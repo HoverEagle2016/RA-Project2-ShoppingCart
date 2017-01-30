@@ -1,9 +1,10 @@
-		var shoppingCart = [{"skuNumber" :"221334", "quantity": "-1", "price": "10"}];
-
+		var shoppingCart = [{"skuNumber" :"221334", "quantity": "2", "price": "10"}];
 		var newSku = "221334";
 		var price = "299";
 /********************** INSERT ITEM **********************/
-function insertItem(){
+function insertAction(object){
+		newSku = object.id.replace(/\D/g, '');
+		price = object.getAttribute('data-price');
 
 		if(shoppingCart.length === 0) {
 
@@ -24,18 +25,20 @@ function insertItem(){
 		}
 
 		function addNewObject() {
-			var newString = `{"skuNumber" :"${newSku}", "quantity": 1, "price": "${price}"}`;
+			var newString = `{"skuNumber":"${newSku}", "quantity": 1, "price": "${price}"}`;
 				var newObject = JSON.parse(newString);
 				shoppingCart.push(newObject);
 		}
 
-		return shoppingCart;
+		console.log(shoppingCart);
 
 }
 
 /********************** DELETE ITEM **********************/
 
-function deleteItem() {
+function deleteAction(object) {
+	newSku = object.id.replace(/\D/g, '');
+		price = object.getAttribute('data-price');
 
 	for(var i = 0; i < shoppingCart.length; i++) {
 			
@@ -50,7 +53,7 @@ function deleteItem() {
 			} 
 	}
 
-	return shoppingCart;
+	console.log(shoppingCart);
 }
 
 

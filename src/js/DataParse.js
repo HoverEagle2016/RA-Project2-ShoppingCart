@@ -68,16 +68,16 @@
 //  });
  
 
-// window.addEventListener("load", getData, false);
+window.addEventListener("load", getData, false);
 
-	function outputToDiv(text){
-            var outputDiv = document.getElementById("productList");
-            var newTextNode = document.createTextNode(text);
-            // var newElementNode = document.createElement("br");
-            outputDiv.appendChild(newTextNode);
-            // outputDiv.appendChild(newElementNode);
-            console.log("test = " + text);
-        }
+	// function outputToDiv(text){
+ //            var outputDiv = document.getElementById("productList");
+ //            var newTextNode = document.createTextNode(text);
+ //            // var newElementNode = document.createElement("br");
+ //            outputDiv.appendChild(newTextNode);
+ //            // outputDiv.appendChild(newElementNode);
+ //            console.log("test = " + text);
+ //        }
 	
 	function dataPopulate(theData){
 		let JSONData = JSON.parse(theData);
@@ -94,16 +94,30 @@
 		  			<button>Quick View</button>
 		  			<button class="shopBtn color-white">Add to Cart</button>
 		  		</div>	
-		</div>`;
+		</div>`;	
+		}
+		
 
-			if(i == JSONData.products.length-1){
-				//console.log(output);
-				// document.getElementById("productList").innerHTML = output;
+		$('.owl-carousel').owlCarousel({
+			    loop:true,
+			    margin:10,
+			    nav:true,
+			    responsive:{
+			        0:{
+			            items:1
+			        },
+			        600:{
+			            items:2
+			        },
+			        1000:{
+			            items:4
+			        }
+			    }
+			    });
 				// owl.data('owl-Carousel').addItem(output);
-				$('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');
-				//owl.reinit();			
-			}
-		}		
+				//owl.reinit();	
+				$('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');		
+				$('.owl-carousel').reinit();
 	}
 
 	function onResults(e) {

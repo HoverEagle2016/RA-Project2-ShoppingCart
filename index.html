@@ -12,8 +12,12 @@
 	<script src="https://use.fontawesome.com/b6d7953a77.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="src/js/owl.carousel.min.js"></script>  	
+	
+	<!-- <script type="text/javascript" src="src/js/ShoppingCart.js"></script> -->
+	<!-- <script type="text/javascript" src="src/js/DataParse.js"></script> -->
 	<script type="text/javascript" src="src/js/app.js"></script>
-	<script type="text/javascript" src="src/js/DataParse.js"></script>
+	<!-- <script type="text/javascript" src="src/js/JSON_object.js"></script> -->
+	<script type="text/javascript" src="src/js/ShoppingCart.js"></script>
 	<!-- <script type="text/javascript">
 		window.addEventListener("load", init, false);
 	</script> -->
@@ -89,16 +93,16 @@
 	  	</h3>
 
 	   <div id="productList" class="owl-carousel owl-theme clear-fix">
-		  	<div id="product1" data-sku="" class="product text-center">
+		  	<div id="product1" class="product text-center">
 		  		<img class="productImg" src="assets/images/stretch-knit-dress.jpg" alt="knit-dress">
 		  		<p class="manufacturer"> Dell</p>
 		  		<h4 class="productName lineHeight-lrg">Dell - Latitude 14" Refurbished Laptop - Intel Core i5</h4>
-		  		<p class="productPrice">$169.00</p>
+		  		<p id="product1Price" class="productPrice">$169.00</p>
 		  		<div>
 		  			<button>Quick View</button>
-		  			<button class="shopBtn color-white">Add to Cart</button>	
+		  			<button id="insert-10134556" onClick="insertAction(this)" class=" color-white" data-sku="10134556" data-price="169">Add to Cart</button>	
 		  		</div>	
-		  		<button>Remove</button>
+		  		<button id="delete-10134556" onClick="deleteAction(this)" class="deleteAction" data-sku="10134556" data-price="169">Remove</button>
 		  	</div>
 		  	<div class="product text-center">
 		  		<img class="productImg" src="assets/images/cotton-blue-shirt.jpg" alt="cotton-shirt">
