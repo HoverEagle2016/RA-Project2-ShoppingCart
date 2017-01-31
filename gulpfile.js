@@ -25,7 +25,7 @@ gulp.task('default', function () {
 });
 
 gulp.task('scss', function() {
-    gulp.src('Test/Src/SCSS/**/*.scss')
+    gulp.src('src/scss/**/*.scss')
         // .pipe(gulp_sourcemaps.init())
         .pipe(gulp_scss())
         // .pipe(gulp_sourcemaps.write('.'))
@@ -34,12 +34,12 @@ gulp.task('scss', function() {
           "maxLineLen": 100000,
           "uglyComments": true
         }))
-        .pipe(gulp_rename("minifyScss.css"))
-        .pipe(gulp.dest('Test/dist'));
+        .pipe(gulp_rename("app.css"))
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('watch', function() {
-	gulp.watch('Test/**/*.css',['css']);
+	gulp.watch('src/scss/**/*.css',['scss']);
 });
 
 gulp.task('webserver', function() {

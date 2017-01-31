@@ -1,0 +1,548 @@
+/************ 
+Font Familes 
+*************/
+.font-lrg {
+	font-size:4.5rem;
+}
+.font-med {
+	font-size: 2.5rem;
+}
+/*@font-face {
+	font-family: raleWay;
+	src: url(../assets/fonts/Raleway-Light.ttf);
+}*/
+/*@font-face {
+	font-family: playfairBI;
+	src: url(../assets/fonts/PlayfairDisplay-BoldItalic.otf);	
+}*/
+/*@font-face {
+	font-family: RalewayI;
+	src: url(../assets/fonts/Raleway-MediumItalic.ttf);
+}*/
+@font-face {
+	font-family: PlayfairI;
+	src: url(../assets/fonts/PlayfairDisplay-Italic.otf);
+}
+@font-face {
+	font-family: Playfair;
+	src: url(../assets/fonts/PlayfairDisplay-Regular.otf);
+}
+/*.font-Raleway {
+	font-family: Raleway;
+}*/
+.font-PlayfairI {
+	font-family: PlayfairI;
+}
+.font-Playfair {
+	font-family: Playfair
+}
+/************ 
+Sizing
+*************/
+.width-med {
+	width: 9rem;
+}
+.width-sml {
+	width: 4rem;
+}
+.width-70perc {
+	width: 70%;
+}
+.width-25perc {
+	width: 25%;
+}
+.width-40perc {
+	width: 40%;
+}
+
+/************ 
+Spacing Options
+*************/
+.padding-lrg {
+	padding:1rem;
+}
+.padding-lf-rt {
+	margin: 0 9rem;
+}
+/*.padding-bottom {
+	padding-bottom: 1rem;
+}*/
+.margin-top-bottom {
+	margin: 1rem 0;
+}
+.margin-lrg {
+	margin: 2%;
+}
+/*.margin-med {
+	margin: 1.5%;
+}*/
+.margin-logo {
+	margin: 4%;
+}
+/*.margin-left {
+	margin-left: 25%;
+}*/
+/************ 
+Text and paragraph arrangement
+*************/
+.text-center {
+	text-align: center;
+}
+.text-shadow {
+	text-shadow: 1px 2px #696969;
+}
+.body-paragraph {
+	font-size: 1.2rem;
+	text-align: center;
+	padding: 2%;
+	font-family: raleway;
+}
+.lineHeight-lrg {
+	line-height: 2.5rem;
+}
+.lineHeight-regular {
+	line-height: 2rem;
+}
+.border-radius {
+	border-radius: 30px;
+}
+.border-none {
+	border: none;
+}
+/************ 
+Float
+*************/
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+/************ 
+Position
+*************/
+.position-abs {
+	position: absolute;
+}
+.position-rel {
+	position: relative;
+}
+.position-fixed{
+	position: fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height: 10%;
+	z-index: 5;
+	background-color: white;
+}
+/************ 
+Flex Section
+*************/ 
+.flex{
+	display: flex;
+}
+
+.flex-column{
+	flex-direction: column;
+}
+
+.flex-row{
+	flex-direction: row;
+}
+
+.flex-wrap{
+	flex-wrap: wrap;
+}
+
+.flex-center {
+	justify-content: center;
+	align-items: center;
+}
+/************ 
+Color Options
+*************/
+.color-white {
+	color: white;
+}
+.color-address {
+	color: #696969;
+}
+
+/************ 
+Background
+*************/
+.background-color {
+	background-color: white;
+}
+.background-red {
+	background-color: red
+}
+.background-footer {
+	background-color:#252525;
+}
+
+/************ 
+Clear Fix
+*************/ 
+.clear-fix:after {
+	clear: both;
+	content: " ";
+	display: table;
+}
+/************ 
+Header Section
+*************/
+.menuWidth {
+		width: 28%;
+	}
+.logoWidth {
+		width: 27%;
+	}
+
+.menu{
+	padding: 2% 9%;
+    font-size: 1rem;
+    color: red;
+}
+
+.menuOrder {
+	order:0;
+	}
+.menuItem{
+	width: 25%;
+	}
+
+.cartImg {
+	right: 0;
+	margin: 2%;
+}
+
+.cartQty {
+    right: 0;
+    width: 5%;
+    height: 17%;
+    border-radius: 100px;
+    margin: 2%;
+}
+/************ 
+Banner Section
+*************/
+.banner {
+	clear: both;
+	background: linear-gradient(rgba(0,0,0,0.4), transparent),url("../assets/images/banner-girl.png")bottom center no-repeat, url("../assets/images/flower-bkgd.jpg") repeat-x;
+	background-size: contain, 20% 85%, cover;
+	min-height: 90vh;
+}
+/************ 
+Category Section
+*************/
+	.mensDiv{
+	background:url(../assets/images/mens-category.jpg);
+	}
+
+	.trendsDiv {
+	background:url(../assets/images/trends-category.jpg);
+	}
+
+	.glassDiv{
+	background:url(../assets/images/glasses-category.jpg);
+	}
+
+	.saleDiv {
+	background:url(../assets/images/sale-category.jpg);
+	}
+
+	.bagsDiv {
+	background:url(../assets/images/bags-category.jpg);
+	}
+
+	.womenDiv{
+	background:url(../assets/images/womens-category.jpg);
+	}
+	.itemLrg{
+		width: 49.7%;
+	}
+	.itemSml{
+		width:24.5%;
+	}
+	.category-background {
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		height: 30vh;
+		margin: 0.3%;
+	}
+	.category{
+		font-size:1.3rem;
+	}
+
+	.mensDiv, .saleDiv{
+		margin-left:0;
+	}
+
+	.glassDiv, .womenDiv{
+		margin-right:0;
+	}
+
+/************ 
+Product Section
+*************/ 
+.productType {
+	font-family: raleway;
+	font-size: 11px;
+}
+.productImg {
+max-width: 100%;  
+}
+.productName {
+	font-size: 20px;
+	color: red;
+}
+.productPrice{
+	color: grey;
+	font-family: playfairBI;
+	font-size: 12px;
+}
+.shopBtn{
+	background-color: black;
+    border-radius: 200px;
+    margin:5%;
+}
+/************ 
+Subscription Section
+*************/ 
+.subscription {
+	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3), transparent), url(../assets/images/wave-bkgd.jpg);	
+	padding: 5%;
+	background-size: cover;
+	background-position: bottom;	
+}
+.emailSection {
+	margin: 0 auto;
+	padding: 3px 3px 3px 10px;
+	background-color: white;	
+}
+.contact-margin {
+	margin: 3.5rem 2rem;
+}
+a:link {
+	text-decoration: none;
+}
+@media screen and (min-width: 1050px) {
+	.mobileIcon {
+		display: none;
+	}
+}
+
+
+/***********************************************
+				Tablet Device
+**********************************************/
+@media screen and (max-width: 1050px) and (min-width: 600px){
+	
+	.mobileIcon {
+		display: none;
+	}
+	.banner {
+		min-height: 70vh;
+	}
+	.banner-girl {
+		background-size: contain;
+		background-position: bottom;
+		width: 40%;
+		margin-left: -20%;
+	}
+	.body-paragraph {
+		margin: 0;
+		font-size: 100%;
+		line-height: 2rem;
+	}
+	.logoWidth{
+		width:26%;
+	}
+	.menu{
+		padding:3.5% 5% 2%;
+		width:38%;
+	}
+	.cartQty{
+	    width: 7%;
+	    height: 20%;   
+	    margin: 4%;
+	}
+	.cartImg{
+		margin:4%;
+	}    
+
+}
+/***********************************************
+				Mobile Device
+***********************************************/
+@media screen and (max-width: 600px) {
+	
+	.font-lrg {
+	font-size:3rem;
+	}
+	.font-med {
+		font-size: 1.5rem;
+	}
+	.padding-lf-rt {
+	margin: 0 2rem;
+	}
+	.width-sml {
+		width: 25%;
+	}
+	.width-med {
+		width: 55%;
+	}
+	.margin-sml {
+		margin: 5% 5% 0;
+	}
+	.width-40perc {
+		width: 90%;
+		margin: 7% 5%;
+	}
+	.banner {
+		min-height: 50vh;
+		background-size: contain, 28% 74%, cover;
+	}
+	
+	.body-paragraph {
+		margin: 0;
+		font-size: 100%;
+		line-height: 2rem;
+	}
+	.breakLine-margin {
+		margin: 10% 0;
+	}
+	.lineHeight-lrg{
+		line-height: 1.5rem;
+	}
+	.product {
+		line-height: 2rem;
+	}
+	.font-sml {
+		font-size: 70%;
+	}
+    .desktopIcon {
+		display:none;
+	}
+	.contact {
+	float: none;
+	text-align: center;
+	margin: 0;
+	padding: 10%;
+	}
+	.subscription {
+		margin-top: 10%;
+		-webkit-appearance: none;
+	}
+	.emailSection {
+		padding: 2px 2px 2px 5px;
+	}
+	.MbIcon-padding {
+		padding: 5% 1.5%;
+	}
+/************ 
+Category Section
+*************/
+	.itemLrg{
+		width: 100%;
+	}
+	.itemSml{
+		width:49.5%;
+	}
+
+	.itemMargin{
+		margin:0.5%;
+	}
+	
+	.category-background {
+	min-height: 30vh;
+	}
+	.mensDiv,.trendsDiv,.saleDiv,.womenDiv{
+		margin-left:0;
+	}
+	.mensDiv,.glassDiv,.bagsDiv,.womenDiv{
+		margin-right:0;
+	}
+/************ 
+Menu Section
+*************/
+
+.position-fixed{
+	position: fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height: 11%;
+	z-index: 5;
+	background-color: white;
+}	
+	.menu{
+    padding: 0.5% 5% 2%;
+    font-size: 0.9rem;
+}
+	.menuItem{
+	width: 25%;
+	}
+
+	.menuWidth {
+		width: 100%;
+	}
+	.logoWidth {
+		width: 50%;
+	}
+	.menuOrder {
+	order:3;
+	}
+	.cartQty {
+	    width: 6%;
+	    height: 20%;
+	    border-radius: 200px;
+	    margin: 3%;
+	    font-size: 0.5rem;
+	}
+	.cartImg{
+		margin:3%;
+	}
+
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

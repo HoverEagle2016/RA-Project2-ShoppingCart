@@ -12,25 +12,37 @@ $("document").ready(function(){
 
 export default class View{
 
-	dataPopulate(theData){
-		let JSONData = JSON.parse(theData);
-		let output = "";
+	constructor() {
+		this.productsArray = null;
+		this.productString = null;
+		this.categoryString = null;
+	}
 
-		for(let i = 0; i < JSONData.products.length; i++) {
-			 output += 
-		`<div class="product text-center product${i}" data-sku="${JSONData.products[i].sku}"> 						
-				<img class="productImg" src="${JSONData.products[i].image}" alt="${JSONData.products[i].modelNumber}">
-		  		<p class="manufacturer">"${JSONData.products[i].manufacturer}"</p>
-		  		<h4 class="productName lineHeight-lrg">${JSONData.products[i].name}</h4>
-		  		<p class="productPrice">${JSONData.products[i].regularPrice}</p>
+	dataPopulate(productsArray){
+		
+		let output = "";
+		
+		for(let i = 0; i < productsArray.length; i++) {
+			
+		output += 
+		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}"> 						
+				<img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}">
+		  		<p class="manufacturer">"${productsArray[i].manufacturer}"</p>
+		  		<h4 class="productName lineHeight-lrg">${productsArray[i].name}</h4>
+		  		<p class="productPrice">${productsArray[i].regularPrice}</p>
 		  		<div>
 		  			<button>Quick View</button>
 		  			<button class="shopBtn color-white">Add to Cart</button>
+		  			<button>Delete</button>
 		  		</div>	
 		</div>`;	
-		}
 		
-		$('.owl-carousel').owlCarousel({
+		}
+				$("#productList").append(output);
+				// owl.data('owl-Carousel').addItem(output);
+				//owl.reinit();	
+				
+				$('.owl-carousel').owlCarousel({
 			    loop:true,
 			    margin:10,
 			    nav:true,
@@ -46,9 +58,8 @@ export default class View{
 			        }
 			    }
 			    });
-				// owl.data('owl-Carousel').addItem(output);
-				//owl.reinit();	
-				$('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');		
+
+				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');		
 
 		}
 }
