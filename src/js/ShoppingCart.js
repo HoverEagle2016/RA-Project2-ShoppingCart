@@ -1,26 +1,45 @@
-	
-function insertAction(object){
-	var newSku = object.id.replace(/\D/g, '');
+export default class ShoppingCart {
+
+	 insertAction(object){
+
+	if (typeof(Storage) !== "undefined") {
+
+    let newSku = object.id.replace(/\D/g, '');
 	if(sessionStorage.getItem(newSku) === null){
 			sessionStorage.setItem(newSku, 1);
 	} else {
-		var quantity = sessionStorage.getItem(newSku);
+		let quantity = sessionStorage.getItem(newSku);
 		sessionStorage.setItem(newSku, parseInt(quantity)+1);
 	}
-	
-
-	console.log(sessionStorage);
-
-}
-
-function deleteAction(object){
-	var newSku = object.id.replace(/\D/g, '');
-	var quantity = sessionStorage.getItem(newSku);
-	sessionStorage.setItem(newSku, quantity-1);
-
-	if(sessionStorage.getItem(newSku) <= 0){
-		sessionStorage.removeItem(newSku);
+	} else {
+	    console.log("Sorry! No Web Storage support..");
 	}
-	
-	console.log(sessionStorage.getItem(newSku));
+
 }
+
+ deleteAction(object){
+	
+	if (typeof(Storage) !== "undefined") {
+  		let newSku = object.id.replace(/\D/g, '');
+		let quantity = sessionStorage.getItem(newSku);
+		sessionStorage.setItem(newSku, quantity-1);
+
+		if(sessionStorage.getItem(newSku) <= 0){
+			sessionStorage.removeItem(newSku);
+		}		
+	} 
+	else {
+	    console.log("Sorry! No Web Storage support..");
+	}
+
+	
+}
+
+
+}
+	
+
+
+
+
+	

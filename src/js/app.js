@@ -1,49 +1,7 @@
-// import DataParse from './DataParse';
+import BestBuyWebService from './BestBuyWebService';
+import View from './View';
+import ShoppingCart from './ShoppingCart';
 
-let JSONData = [];
+export default class App {
 
-$("document").ready(function(){
-    
-    $('.owl-carousel').owlCarousel({
-                loop:true,
-                margin:10,
-                nav:true,
-                responsive:{
-                    0:{
-                        items:1
-                    },
-                    600:{
-                        items:2
-                    },
-                    1000:{
-                        items:4
-                    }
-                }
-                });
-    
-    $("#Qty").hide();
-
-    $(".shopBtn").on("click", function(){
-        
-    $("#Qty").show();
-    var inputField = parseInt($("#Qty").val());
-    $("#Qty").val(inputField + 1);
-
-    });
-
-}); // JQuery READY function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
