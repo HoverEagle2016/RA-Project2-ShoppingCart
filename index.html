@@ -21,7 +21,7 @@
  <body>
 	  <header class="position-fixed flex flex-wrap">
 			<div class= "logoWidth">
-				<img class="width-med margin-logo" src="assets/images/aloha-logo.svg" alt="img">
+				<img class="width-med margin-logo" src="../../assets/images/aloha-logo.svg" alt="img">
 			</div>
 	  		<div class="flex menu menuWidth menuOrder">
 	  			<p class="menuItem text-center">ABOUT</p>
@@ -30,7 +30,7 @@
 	  			<p class="menuItem text-center">UPDATES</p>
 	  		</div>
 	  		<div class="logoWidth position-rel">
-		  		<img class="cartImg position-abs width-sml" src="assets/images/cart-icon.svg" alt="check-out cart">
+		  		<img id="cart" class="cartImg position-abs width-sml" src="../../assets/images/cart-icon.svg" alt="check-out cart">
 		  		<input id="Qty" class="position-abs cartQty background-red color-white text-center" type="text" value=0>
 	  		</div>
 	  </header>
@@ -46,6 +46,24 @@
 		 	</h1>	
 		</div> 	
 	  </section>
+
+
+		<div id="cartWindow" class="modal">
+			<div class="modal-content">
+			    <div class="modal-header">
+			      <span class="close">&times;</span>
+			      <h1>Your Cart</h1>
+			    </div>  
+			</div>
+			<div id="popupWindow" class="modal-content">
+				
+			</div>
+		    <div class="modal-footer">
+		      	<h3>Check Out</h3>
+			</div>
+	    </div>
+			
+
 	  <!-- Call To Action -->
 	  <section>
 <div class="text-center margin-lrg">

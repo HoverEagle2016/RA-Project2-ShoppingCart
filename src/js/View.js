@@ -12,9 +12,9 @@ export default class View{
 	}
 
 
-	dataPopulate(productsArray, theApp){
+	dataPopulate(productsArray){
 
-		this.app = theApp;
+		// this.app = theApp;
 		
 		let output = "";
 		
@@ -28,7 +28,7 @@ export default class View{
 		  		<p class="productPrice">${productsArray[i].regularPrice}</p>
 		  		<div>
 		  			<button>Quick View</button>
-		  			<button class="shopBtn color-white">Add to Cart</button>
+		  			<button id="insert-${productsArray[i].sku}" class="addToCart">Add to Cart</button>
 		  			<button>Delete</button>
 		  		</div>	
 		</div>`;	

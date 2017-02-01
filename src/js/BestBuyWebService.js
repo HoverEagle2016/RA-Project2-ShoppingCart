@@ -14,7 +14,7 @@ export default class BestBuyWebService {
 			
 			this.JSONData = JSON.parse(e.target.responseText);
 			theApp.productsArray = this.JSONData.products;
-			
+					
 			theApp.productsPopulate(theApp.productsArray);
 		}
 	}; 

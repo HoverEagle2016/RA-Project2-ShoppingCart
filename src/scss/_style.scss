@@ -19,14 +19,14 @@ Font Familes
 	font-family: RalewayI;
 	src: url(../assets/fonts/Raleway-MediumItalic.ttf);
 }*/
-@font-face {
-	font-family: PlayfairI;
-	src: url(../assets/fonts/PlayfairDisplay-Italic.otf);
-}
-@font-face {
-	font-family: Playfair;
-	src: url(../assets/fonts/PlayfairDisplay-Regular.otf);
-}
+									// @font-face {
+									// 	font-family: PlayfairI;
+									// 	src: url(../assets/fonts/PlayfairDisplay-Italic.otf);
+									// }
+									// @font-face {
+									// 	font-family: Playfair;
+									// 	src: url(../assets/fonts/PlayfairDisplay-Regular.otf);
+									// }
 /*.font-Raleway {
 	font-family: Raleway;
 }*/
@@ -230,7 +230,7 @@ Banner Section
 *************/
 .banner {
 	clear: both;
-	background: linear-gradient(rgba(0,0,0,0.4), transparent),url("../assets/images/banner-girl.png")bottom center no-repeat, url("../assets/images/flower-bkgd.jpg") repeat-x;
+	background: linear-gradient(rgba(0,0,0,0.4), transparent), url("../../assets/images/banner.jpg") repeat-x;
 	background-size: contain, 20% 85%, cover;
 	min-height: 90vh;
 }
@@ -238,27 +238,27 @@ Banner Section
 Category Section
 *************/
 	.mensDiv{
-	background:url(../assets/images/mens-category.jpg);
+	background:url(../../assets/images/cell-category.jpg);
 	}
 
 	.trendsDiv {
-	background:url(../assets/images/trends-category.jpg);
+	background:url(../../assets/images/desktop-category.jpg);
 	}
 
 	.glassDiv{
-	background:url(../assets/images/glasses-category.jpg);
+	background:url(../../assets/images/home-audio-category.jpg);
 	}
 
 	.saleDiv {
-	background:url(../assets/images/sale-category.jpg);
+	background:url(../../assets/images/laptop-category.jpg);
 	}
 
 	.bagsDiv {
-	background:url(../assets/images/bags-category.jpg);
+	background:url(../../assets/images/tablet-category.jpg);
 	}
 
 	.womenDiv{
-	background:url(../assets/images/womens-category.jpg);
+	background:url(../../assets/images/tv-category.jpg);
 	}
 	.itemLrg{
 		width: 49.7%;
@@ -312,7 +312,7 @@ max-width: 100%;
 Subscription Section
 *************/ 
 .subscription {
-	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3), transparent), url(../assets/images/wave-bkgd.jpg);	
+	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3), transparent), url(../../assets/images/music.jpg);	
 	padding: 5%;
 	background-size: cover;
 	background-position: bottom;	
@@ -504,10 +504,80 @@ Menu Section
 	}
 	.cartImg{
 		margin:3%;
-	}
+	}	
+	
+}
 
-	
-	
+
+/*CartView Pop-up Window*/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
 }
 
 

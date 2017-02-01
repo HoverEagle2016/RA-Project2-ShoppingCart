@@ -39,7 +39,7 @@ gulp.task('scss', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('src/scss/**/*.css',['scss']);
+	gulp.watch('src/scss/**/*.scss',['scss']);
 });
 
 gulp.task('webserver', function() {
