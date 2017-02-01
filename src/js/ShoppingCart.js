@@ -68,27 +68,30 @@ generateCartView(e) {
 		
 		for(let j = 0; j < this.productsArray.length; j++){
 			
-		if(sku == this.productsArray[j].sku){
-			
-			productString = ` <div class="modal-body">
-							      <img src="">
-							      <p>manufacturer:${this.productsArray[j].manufacturer}</p>
-							      <p>modelNumber:${this.productsArray[j].modelNumber}</p>
-							      <div>
-							        <p>quantity:${sessionStorage.getItem(sku)}</p>
-							        <input type="text" name="">
-							      </div>
-							      <p>price:${this.productsArray[j].price}</p>
-							      <div>
-							          <button>Update</button>
-							          <button>Remove</button>
-							      </div>`;
-					} // if Statement
-					
-			} // inner Loop
+			if(sku == this.productsArray[j].sku){
+				productString = ` <div class="modal-body">
+								      <img src="${this.productsArray[i].imag}">
+								      <p>manufacturer:${this.productsArray[j].manufacturer}</p>
+								      <p>modelNumber:${this.productsArray[j].modelNumber}</p>
+								      <div>
+								        <p>quantity:${sessionStorage.getItem(sku)}</p>
+								        <input type="text" name="">
+								      </div>
+								      <p>price:${this.productsArray[j].regularPrice}</p>
+								      <div>
+								          <button id="update-${this.productsArray[j].sku}">Update</button>
+								          <button>Remove</button>
+								      </div>`;
+						console.log("test");
+
+						$('#cartWindow').append(productString);
+						} // if Statement
+				} // inner Loop
+		
+
 		} // outer Loop
 		
-			$('#cartWindow').append(productString);
+			
 }
 
 

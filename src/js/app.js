@@ -34,11 +34,8 @@ export default class App {
 		$('#cartWindow').show();
 		event.data.theApp.shoppingCart.generateCartView();
 	
-});
-		// this.shoppingCart.prepCartView();
-		//this.shoppingCart.generateCartView();
-		
-	}
+		});
+		}
 
 
 }
