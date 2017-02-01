@@ -1,14 +1,6 @@
 
 
-$("document").ready(function(){  
-    $("#Qty").hide();
-    $(".shopBtn").on("click", function(){
-    $("#Qty").show();
-    var inputField = parseInt($("#Qty").val());
-    $("#Qty").val(inputField + 1);
-    });
 
-}); // JQuery READY function
 
 export default class View{
 
@@ -32,7 +24,7 @@ export default class View{
 		  		<p class="productPrice">${productsArray[i].regularPrice}</p>
 		  		<div>
 		  			<button>Quick View</button>
-		  			<button class="shopBtn color-white">Add to Cart</button>
+		  			<button onClick="insertAction(this)" class="shopBtn color-white">Add to Cart</button>
 		  			<button>Delete</button>
 		  		</div>	
 		</div>`;	
@@ -60,6 +52,10 @@ export default class View{
 			    });
 
 				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');		
+
+		}
+
+		qucikView(){
 
 		}
 }
