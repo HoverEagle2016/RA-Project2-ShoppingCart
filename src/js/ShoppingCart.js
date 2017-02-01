@@ -10,22 +10,16 @@ $(document).on("click",".addToCart",function(){
 
 	    if (typeof(Storage) !== "undefined") {
 
-			    let newSku = this.id.replace(/\D/g, '');
-
-				if(sessionStorage.getItem(newSku) === null){
-						sessionStorage.setItem(newSku, 1);
-
-						
-				} else {
-					let quantity = sessionStorage.getItem(newSku);
-					sessionStorage.setItem(newSku, parseInt(quantity)+1);
-					console.log(sessionStorage);
-				}
-
-		} else {
-				    console.log("Sorry! No Web Storage support..");
-				}	    		
-    		
+    let newSku = this.id.replace(/\D/g, '');
+	if(sessionStorage.getItem(newSku) === null){
+			sessionStorage.setItem(newSku, 1);
+	} else {
+		let quantity = sessionStorage.getItem(newSku);
+		sessionStorage.setItem(newSku, parseInt(quantity)+1);
+	}
+	} else {
+	    console.log("Sorry! No Web Storage support..");
+	}
 });
 
 /*****************************Insert Action
@@ -55,14 +49,20 @@ generateCartView(e) {
 	
 	// let rawSku = e.target.id;
 	// let sku = rawSku.replace(/\D/g, '');
-	let cartViewString = "";
+
 	for(let i = 0; i < sessionStorage.length; i++){
 		let sku = sessionStorage.key[i];
 		for(let j = 0; j < this.productsArray.length; j++){
 
 		if(sku == this.productsArray[j].sku){
 
-							let productString = `
+				let cartViewString = `<div id="myModal" class="modal">
+							  <div class="modal-content">
+							    <div class="modal-header">
+							      <span class="close">&times;</span>
+							      <h1>Your Cart</h1>
+							    </div>
+							    <div class="modal-body">
 							      <img src="">
 							      <p>manufacturer:${this.productsArray[i].manufacturer}</p>
 							      <p>modelNumber:${this.productsArray[i].modelNumber}</p>
@@ -74,10 +74,13 @@ generateCartView(e) {
 							      <div>
 							          <button>Update</button>
 							          <button>Remove</button>
-							      </div>`;
-						
-
-
+							      </div>
+							    </div>
+							    <div class="modal-footer">
+							      <h3>Check Out</h3>
+							    </div>
+							  </div>
+							</div>`;
 					} // if Statement
 
 					break;
@@ -89,25 +92,6 @@ generateCartView(e) {
 }
 
 
-cartViewPop() {
-		 cartViewString = `<div id="myModal" class="modal">
-							  <div class="modal-content">
-							    <div class="modal-header">
-							      <span class="close">&times;</span>
-							      <h1>Your Cart</h1>
-							    </div>
-								<div class="modal-body">
-
-
-
-								</div>
-							    <div class="modal-footer">
-							      <h3>Check Out</h3>
-							    </div>
-							  </div>
-							</div>`;
-}
-
 prepCartView(productsArray) {
 	// let buttons = document.getElementsByClassName("addToCart");
 
@@ -118,6 +102,7 @@ prepCartView(productsArray) {
 	let cart = document.getElementById('cart');
 
 	cart.addEventListener("click", this.generateCartView,false);
+
 
 }
 

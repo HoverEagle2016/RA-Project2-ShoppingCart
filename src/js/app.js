@@ -1,15 +1,14 @@
 import BestBuyWebService from './BestBuyWebService';
 import View from './View';
 import ShoppingCart from './ShoppingCart';
+$("document").ready(function(){  $("#Qty").hide();   });
+
 
 export default class App {
 
 	constructor() {
-		 
 		 this.productsArray = null;
-		 
 		 this.view = new View();
-		 this.shoppingCart = new ShoppingCart();
 		 this.initBestBuyService();		 
 	}
 
@@ -19,8 +18,22 @@ export default class App {
 	}
 
 	// Populate data into the products section
-	productsPopulate(productsArray) {
-		this.view.dataPopulate(productsArray);
+	productsPopulate(productsArray, theApp) {
+		this.view.dataPopulate(productsArray,this);
+	}
+
+	initShoppingCart(){
+		this.shoppingCart = new ShoppingCart(this.productsArray);
+	}
+
+	prepCartView(productsArray, theApp){
+		this.shoppingCart.prepCartView(this.productsArray, this);
 	}
 
 }
+
+
+
+
+
+
