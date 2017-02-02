@@ -26,35 +26,12 @@ $(document).on("click",".addToCart",function(){
 });
 
 
-
-	
-	
-
-
-
-
-/*****************************Insert Action
-**********************************/
-
-/*****************************Generate Cart View 
-**********************************/
-
-
-
-
-/*****************************Generate Cart View 
-**********************************/
-
-
-/*****************************Delete Action
-**********************************/
-
-
 export default class ShoppingCart {
 
 constructor(productsArray, theApp){
 	this.productsArray = productsArray;
 	this.theApp = theApp;
+	this.updateCart();
 }
 
 generateCartView(e) {
@@ -75,22 +52,19 @@ generateCartView(e) {
 								      <p>modelNumber:${this.productsArray[j].modelNumber}</p>
 								      <div>
 								        <p>quantity:${sessionStorage.getItem(sku)}</p>
-								        <input type="text" name="">
+								        <input type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
 								      </div>
 								      <p>price:${this.productsArray[j].regularPrice}</p>
 								      <div>
-								          <button id="update-${this.productsArray[j].sku}">Update</button>
+								          <button class="updateBtn" id="update-${this.productsArray[j].sku}">Update</button>
 								          <button>Remove</button>
 								      </div>`;
-						console.log("test");
 
-						$('#cartWindow').append(productString);
+						$('#popupWindow').append(productString);
 						} // if Statement
-				} // inner Loop
-		
+				} // inner Loop		
 
-		} // outer Loop
-		
+		} // outer Loop		
 			
 }
 
@@ -109,6 +83,19 @@ deleteAction(object){
 		else {
 		    console.log("Sorry! No Web Storage support..");
 		}	
+	}
+
+	updateCart(){
+		$(document).on("click",".updateBtn",function(){
+
+			let skuNumber = $(this).attr("id").replace(/\D/g, '');
+			
+			// let val = $(`[data-sku="update-${skuNumber}"]`).val();
+
+			let value = $(`#input-${skuNumber}`).val();
+			sessionStorage.setItem(skuNumber, value);
+			// let updateValue = 
+		});
 	}
 }
 		
