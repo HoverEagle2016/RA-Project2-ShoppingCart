@@ -90,10 +90,8 @@ generateQuickView(productsArray){
 
 		$(document).on('click','#quickViewClose', function(){
 			
-			quickViewString = '';
-			console.log('quickViewString = ' + quickViewString);
-			$('#quickViewContent').append(quickViewString);
 			$('#quickViewWindow').hide();
+			$('#quickViewContent').html('');
 			
 		});
 
