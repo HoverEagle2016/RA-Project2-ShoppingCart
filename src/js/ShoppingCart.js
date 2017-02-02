@@ -10,9 +10,7 @@ constructor(productsArray, theApp){
 
 generateCartView(e) {
 	let productString = '';
-	// let rawSku = e.target.id;
-	// let sku = rawSku.replace(/\D/g, '');
-
+	
 	for(let i = 0; i < sessionStorage.length; i++){
 		
 		let sku = sessionStorage.key(i);

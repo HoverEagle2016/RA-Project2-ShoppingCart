@@ -9,12 +9,13 @@ export default class View{
 		this.productString = null;
 		this.categoryString = null;
 		this.app = null;	
+
 	}
 
 
-	dataPopulate(productsArray){
+	dataPopulate(productsArray, theApp){
 
-		// this.app = theApp;
+		this.app = theApp;
 		
 		let output = "";
 		
@@ -27,9 +28,8 @@ export default class View{
 		  		<h4 class="productName lineHeight-lrg">${productsArray[i].name}</h4>
 		  		<p class="productPrice">${productsArray[i].regularPrice}</p>
 		  		<div>
-		  			<button>Quick View</button>
+		  			<button class="quickViewBtn" id="quickView-${productsArray[i].sku}">Quick View</button>
 		  			<button id="insert-${productsArray[i].sku}" class="addToCart">Add to Cart</button>
-		  			<button>Delete</button>
 		  		</div>	
 		</div>`;	
 		
@@ -54,15 +54,78 @@ export default class View{
 			        }
 			    }
 			    });
-				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');		
-		}
+				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');	
 
-		test() {
-			alert("hello");
-		}
+		this.generateQuickView(productsArray);
+	}
 
-		qucikView(){
 
-		}
+generateQuickView(productsArray){
+
+		let productsArr = productsArray;
+		let quickViewString = '';
+
+		$(document).on('click', '.quickViewBtn', function(){
+				
+				let skuNumber = $(this).attr("id").replace(/\D/g, '');
+				for(let i = 0; i < productsArr.length; i++){
+					if(skuNumber == productsArr[i].sku){
+
+						 quickViewString =`<div id="popupWindow" class="modal-content">
+												<img id="img" src="${productsArr[i].imag}">
+												<h3>${productsArr[i].modelNumber}</h3>
+												<p>${productsArr[i].manufacturer}</p>
+												<p>${productsArr[i].width}</p>
+												<p>${productsArr[i].color}</p>
+												<p>${productsArr[i].regularPrice}</p>
+												<button>Add To Cart</button>
+												<h3 id="longDescription">${productsArr[i].longDescription}</h3>
+											</div>`;
+							break;
+					}
+				}
+				$('#quickViewWindow').show();
+				$('#quickViewContent').append(quickViewString);
+		});
+
+		$(document).on('click','#quickViewClose', function(){
+			
+			quickViewString = '';
+			console.log('quickViewString = ' + quickViewString);
+			$('#quickViewContent').append(quickViewString);
+			$('#quickViewWindow').hide();
+			
+		});
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 

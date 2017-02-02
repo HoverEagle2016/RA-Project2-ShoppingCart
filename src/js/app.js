@@ -19,7 +19,7 @@ export default class App {
 	}
 
 	// Populate data into the products section
-	productsPopulate(productsArray) {
+	productsPopulate(productsArray,theApp) {
 		this.view.dataPopulate(productsArray);
 		this.productsArray = productsArray;	
 		this.initShoppingCart();
@@ -36,7 +36,7 @@ export default class App {
 
 		$(document).on('click', '#cartClose', function(){
 			$('#cartWindow').hide();
-			console.log("test");
+			
 		});
 		
 	}
