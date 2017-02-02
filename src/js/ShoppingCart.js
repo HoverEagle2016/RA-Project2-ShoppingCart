@@ -20,21 +20,21 @@ generateCartView(e) {
 			if(sku == this.productsArray[j].sku){
 				productString = ` <div class="flex modal-body" id="cartList-${this.productsArray[j].sku}">
 								      
-								      <img src="${this.productsArray[i].image}">
+								      <img class="popImg" src="${this.productsArray[i].image}">
 
-								      <div>
+								      <div class="shoppingCartColumn">
 										<p>manufacturer:${this.productsArray[j].manufacturer}</p>
 									  	<p>modelNumber:${this.productsArray[j].modelNumber}</p>
 								      </div>
 								      
-								      <div>
-								        <p>quantity:${sessionStorage.getItem(sku)}</p>
+								      <div class="shoppingCartColumn">
+								        <p>quantity</p>
 								        <input type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
 								      </div>
 
-								      <p>price:${this.productsArray[j].regularPrice}</p>
+								      <p class="shoppingCartColumn">price:${this.productsArray[j].regularPrice}</p>
 
-								      <div>
+								      <div class="shoppingCartColumn">
 								          <button class="updateBtn" id="update-${this.productsArray[j].sku}">Update</button>
 								          <button class="deleteBtn" id="delete-${this.productsArray[j].sku}">Remove</button>
 								      </div>`;
@@ -92,7 +92,12 @@ updateCart(){
 			$(`#cartList-${skuNumber}`).remove();
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 		});
-	}
+
+		// close Window
+		$(document).on('click', '#cartClose', function(){
+				$('#popupWindow').html('');
+		});
+}
 
 addToCart(){
 

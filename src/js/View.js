@@ -72,7 +72,7 @@ generateQuickView(productsArray){
 					if(skuNumber == productsArr[i].sku){
 
 						 quickViewString =`<div id="popupWindow" class="modal-content">
-												<img id="img" src="${productsArr[i].imag}">
+												<img class="popImg" id="img" src="${productsArr[i].image}">
 												<h3>${productsArr[i].modelNumber}</h3>
 												<p>${productsArr[i].manufacturer}</p>
 												<p>${productsArr[i].width}</p>

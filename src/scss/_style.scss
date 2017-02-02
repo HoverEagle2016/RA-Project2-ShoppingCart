@@ -514,7 +514,7 @@ Menu Section
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -527,12 +527,10 @@ Menu Section
 
 /* Modal Content */
 .modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
+    
+    background-color: #fefefe;  
     border: 1px solid #888;
-    width: 80%;
+    
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -541,15 +539,15 @@ Menu Section
 }
 
 /* Add Animation */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
-}
+// @-webkit-keyframes animatetop {
+//     from {top:-300px; opacity:0} 
+//     to {top:0; opacity:1}
+// }
 
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
+// @keyframes animatetop {
+//     from {top:-300px; opacity:0}
+//     to {top:0; opacity:1}
+// }
 
 /* The Close Button */
 .close {
@@ -567,15 +565,21 @@ Menu Section
 }
 
 .modal-header {
-    padding: 2px 16px;
+    padding: 15px 16px;
     background-color: #5cb85c;
     color: white;
+    font-size: 4vw;
 }
 
 .modal-body {
 	
-	padding: 2px 16px;
+	//padding: 2px 16px;
 
+}
+
+.popImg{
+	width: 15vw;
+	
 }
 
 .modal-footer {
@@ -584,7 +588,13 @@ Menu Section
     color: white;
 }
 
-
+.shoppingCartColumn {
+	width: 25%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
 
 
