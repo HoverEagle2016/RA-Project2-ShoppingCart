@@ -1,37 +1,11 @@
-
-$(document).on("click",".addToCart",function(){
-    	 	
-    	 	$("#Qty").show();
-    		let inputField = parseInt($("#Qty").val());
-    		$("#Qty").val(inputField + 1);	
-    		   		
-
-/*****************************Insert Action**********************************/
-
-	    if (typeof(Storage) !== "undefined") {
-	    	
-		    let newSku = this.id.replace(/\D/g, '');
-		  
-			if(sessionStorage.getItem(newSku) === null){
-					sessionStorage.setItem(newSku, 1);
-			} else {
-				let quantity = sessionStorage.getItem(newSku);
-				sessionStorage.setItem(newSku, parseInt(quantity)+1);
-			}
-
-			} else {
-			    console.log("Sorry! No Web Storage support..");
-			}
-	
-});
-
-
 export default class ShoppingCart {
 
 constructor(productsArray, theApp){
 	this.productsArray = productsArray;
 	this.theApp = theApp;
+	this.addToCart();
 	this.updateCart();
+	
 }
 
 generateCartView(e) {
@@ -46,10 +20,10 @@ generateCartView(e) {
 		for(let j = 0; j < this.productsArray.length; j++){
 			
 			if(sku == this.productsArray[j].sku){
-				productString = ` <div class="modal-body">
+				productString = ` <div class="modal-body" id="cartList-${this.productsArray[j].sku}">
 								      <img src="${this.productsArray[i].imag}">
 								      <p>manufacturer:${this.productsArray[j].manufacturer}</p>
-								      <p>modelNumber:${this.productsArray[j].modelNumber}</p>
+									      <p>modelNumber:${this.productsArray[j].modelNumber}</p>
 								      <div>
 								        <p>quantity:${sessionStorage.getItem(sku)}</p>
 								        <input type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
@@ -57,7 +31,7 @@ generateCartView(e) {
 								      <p>price:${this.productsArray[j].regularPrice}</p>
 								      <div>
 								          <button class="updateBtn" id="update-${this.productsArray[j].sku}">Update</button>
-								          <button>Remove</button>
+								          <button class="deleteBtn" id="delete-${this.productsArray[j].sku}">Remove</button>
 								      </div>`;
 
 						$('#popupWindow').append(productString);
@@ -85,17 +59,63 @@ deleteAction(object){
 		}	
 	}
 
-	updateCart(){
+updateCart(){
+		// update Button function
 		$(document).on("click",".updateBtn",function(){
-
 			let skuNumber = $(this).attr("id").replace(/\D/g, '');
-			
 			// let val = $(`[data-sku="update-${skuNumber}"]`).val();
-
 			let value = $(`#input-${skuNumber}`).val();
 			sessionStorage.setItem(skuNumber, value);
 			// let updateValue = 
 		});
+
+		// delete button function
+		$(document).on("click", '.deleteBtn', function(){
+			let skuNumber = $(this).attr("id").replace(/\D/g, '');
+			sessionStorage.removeItem(skuNumber);
+			$(`#cartList-${skuNumber}`).remove();
+		});
+	}
+
+addToCart(){
+
+	if(sessionStorage.getItem('quantity') > 0){
+					$("#Qty").show();
+	    		$("#Qty").val(sessionStorage.getItem('quantity'));	
+	    	}
+
+	$(document).on("click",".addToCart",function(){
+					    	$("#Qty").show(); 	
+		    if (typeof(Storage) !== "undefined") {
+		    	
+			    let newSku = this.id.replace(/\D/g, '');
+			  	// check if sku number exists
+				if(sessionStorage.getItem(newSku) === null){
+						sessionStorage.setItem(newSku, 1);
+					// Check if 'quantity' property exists
+						if(sessionStorage.getItem('quantity') === null){
+							sessionStorage.setItem('quantity',1);
+						} else{
+							let quantity = sessionStorage.getItem('quantity');
+							sessionStorage.setItem('quantity', parseInt(quantity)+1);
+						}
+					// the sku number already exists
+				} else {
+					
+					let productQuantity = sessionStorage.getItem(newSku);
+					sessionStorage.setItem(newSku, parseInt(productQuantity)+1);
+
+					let quantity = sessionStorage.getItem('quantity');
+					sessionStorage.setItem('quantity', parseInt(quantity)+1);
+				}
+				// update little shopping cart icon quantity
+					$("#Qty").val(sessionStorage.getItem('quantity'));	
+
+				} else {
+				    console.log("Sorry! No Web Storage support..");
+				}
+				
+			});
 	}
 }
 		
