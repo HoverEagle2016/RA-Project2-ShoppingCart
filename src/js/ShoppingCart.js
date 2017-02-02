@@ -61,19 +61,31 @@ deleteAction(object){
 
 updateCart(){
 		// update Button function
+
 		$(document).on("click",".updateBtn",function(){
 			let skuNumber = $(this).attr("id").replace(/\D/g, '');
-			// let val = $(`[data-sku="update-${skuNumber}"]`).val();
-			let value = $(`#input-${skuNumber}`).val();
-			sessionStorage.setItem(skuNumber, value);
-			// let updateValue = 
+		
+			
+			// update the quantiy property in session storage
+			let oldValue = sessionStorage.getItem(skuNumber);
+			let newValue = $(`#input-${skuNumber}`).val();
+			let diff = parseInt(newValue) - parseInt(oldValue);
+
+			let productQuantity = sessionStorage.getItem('quantity');
+			sessionStorage.setItem('quantity', parseInt(productQuantity)+diff);
+			sessionStorage.setItem(skuNumber, newValue);
+			$("#Qty").val(sessionStorage.getItem('quantity'));
 		});
 
 		// delete button function
 		$(document).on("click", '.deleteBtn', function(){
 			let skuNumber = $(this).attr("id").replace(/\D/g, '');
+			let removedQuantity = sessionStorage.getItem(skuNumber);
+			let productQuantity = sessionStorage.getItem('quantity');
+			sessionStorage.setItem('quantity', parseInt(productQuantity)-parseInt(removedQuantity));
 			sessionStorage.removeItem(skuNumber);
 			$(`#cartList-${skuNumber}`).remove();
+			$("#Qty").val(sessionStorage.getItem('quantity'));
 		});
 	}
 
