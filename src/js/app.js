@@ -2,6 +2,7 @@ import BestBuyWebService from './BestBuyWebService';
 import View from './View';
 import ShoppingCart from './ShoppingCart';
 
+// in css
 $("document").ready(function(){  $("#Qty").hide();  });
 
  
@@ -10,7 +11,8 @@ export default class App {
 	constructor() {
 		 this.productsArray = null;
 		 this.initBestBuyService();
-		 this.view = new View();	 
+		 this.view = new View();
+		 this.total = 0;	 
 	}
 
 	initBestBuyService() {
@@ -27,11 +29,16 @@ export default class App {
 
 	initShoppingCart(){	
 		
-		this.shoppingCart = new ShoppingCart(this.productsArray);
+		this.shoppingCart = new ShoppingCart(this.productsArray, this);
 
 		$(document).on('click', '#cart', {theApp:this}, function(event){
-			$('#cartWindow').show();
-			event.data.theApp.shoppingCart.generateCartView();
+
+			if(sessionStorage.getItem('quantity') === null){
+				return;
+			} else {
+				$('#cartWindow').show();
+				event.data.theApp.shoppingCart.generateCartView();
+			}	
 		});
 
 		$(document).on('click', '#cartClose', function(){

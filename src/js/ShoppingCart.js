@@ -3,15 +3,14 @@ export default class ShoppingCart {
 constructor(productsArray, theApp){
 	this.productsArray = productsArray;
 	this.theApp = theApp;
+	
 	this.addToCart();
 	this.updateCart();
-	
 }
 
 generateCartView(e) {
 	let productString = '';
 	let total = 0;
-
 	for(let i = 0; i < sessionStorage.length; i++){
 		
 		let sku = sessionStorage.key(i);
@@ -21,69 +20,46 @@ generateCartView(e) {
 			if(sku == this.productsArray[j].sku){
 
 				let itemTotal = parseInt(sessionStorage.getItem(sku)) * parseInt(this.productsArray[j].regularPrice);
+				
 				total += itemTotal;
 
 				productString = ` <div class="flex modal-body" id="cartList-${this.productsArray[j].sku}">
 								      
-								      <img class="popImg" src="${this.productsArray[i].image}">
+								      <img class="popImg" src="${this.productsArray[j].image}">
 
 								      <div class="shoppingCartColumn">
 										<p>manufacturer:${this.productsArray[j].manufacturer}</p>
 									  	<p>modelNumber:${this.productsArray[j].modelNumber}</p>
 								      </div>
-								      
 								      <div class="shoppingCartColumn">
-								        <p>quantity</p>
-								        <input type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
+								        
+								        <input type="number" min="1" type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
 								      </div>
 
-								      <p class="shoppingCartColumn">price:${this.productsArray[j].regularPrice}</p>
+								      <p id="price-${this.productsArray[j].sku}" class="shoppingCartColumn">price:${this.productsArray[j].regularPrice}</p>
 
 								      <div class="shoppingCartColumn">
 								          <button class="updateBtn" id="update-${this.productsArray[j].sku}">Update</button>
 								          <button class="deleteBtn" id="delete-${this.productsArray[j].sku}">Remove</button>
 								      </div>
 									 	<div class="shoppingCartColumn">
-											<p>Subtotal: ${itemTotal}</p>
+											<p id="subtotal-${this.productsArray[j].sku}">Subtotal: ${itemTotal}</p>
 									 	</div>
 								      `;	
 						$('#popupWindow').append(productString);
 						} // if Statement
 				} // inner Loop		
+
 				$('#checkoutTotal').html("Checkout: " + total);
-		} // outer Loop		
-		
+		} // outer Loop				
 		
 }
 
-
-deleteAction(object){
-		
-		if (typeof(Storage) !== "undefined") {
-	  		let newSku = object.id.replace(/\D/g, '');
-			let quantity = sessionStorage.getItem(newSku);
-			sessionStorage.setItem(newSku, quantity-1);
-
-			if(sessionStorage.getItem(newSku) <= 0){
-				sessionStorage.removeItem(newSku);
-			}		
-		} 
-		else {
-		    console.log("Sorry! No Web Storage support..");
-		}	
-	}
-update_cart_quanity (){
-
-}
-getCurrentTotal (){
-
-}
 updateCart(){
 		// update Button function
 
 		$(document).on("click",".updateBtn",function(){
 			let skuNumber = $(this).attr("id").replace(/\D/g, '');
-		
 			
 			// update the quantiy property in session storage
 			let oldValue = sessionStorage.getItem(skuNumber);
@@ -95,22 +71,56 @@ updateCart(){
 			sessionStorage.setItem('quantity', parseInt(productQuantity)+diff);
 			sessionStorage.setItem(skuNumber, newValue);
 			$("#Qty").val(sessionStorage.getItem('quantity'));
+			
+			//subTotal update
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));
+			let newSub = itemPrice * newValue;
+			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().slice(9));
+			let diffSub = newSub - oldSub;
+			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
+
+			// Total update
+			let newTotal = parseInt($("#checkoutTotal").html().slice(9)) + diffSub;			
+			$('#checkoutTotal').html("Checkout: " + newTotal);
+			this.total = newTotal;
+			
 		});
 
 		// delete button function
 		$(document).on("click", '.deleteBtn', function(){
+
 			let skuNumber = $(this).attr("id").replace(/\D/g, '');
-			let removedQuantity = sessionStorage.getItem(skuNumber);
-			let productQuantity = sessionStorage.getItem('quantity');
-			sessionStorage.setItem('quantity', parseInt(productQuantity)-parseInt(removedQuantity));
+			let removedQuantity = parseInt(sessionStorage.getItem(skuNumber));
+			let productQuantity = parseInt(sessionStorage.getItem('quantity'));
+
+			sessionStorage.setItem('quantity', productQuantity-removedQuantity);
 			sessionStorage.removeItem(skuNumber);
-			$(`#cartList-${skuNumber}`).remove();
+
+			if(sessionStorage.getItem('quantity') == 0){
+				sessionStorage.removeItem('quantity');
+				$("#Qty").hide();
+				$("#cartWindow").hide();
+			}
+
 			$("#Qty").val(sessionStorage.getItem('quantity'));
+			
+			//update Total 
+			// use str.replace instead of slice
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));			
+			let changedPrice = itemPrice * removedQuantity;			
+			let updateTotal = parseInt($("#checkoutTotal").html().slice(9)) - changedPrice;
+			$('#checkoutTotal').html("Checkout: " + updateTotal);
+			this.total = updateTotal;
+			
+
+			$(`#cartList-${skuNumber}`).remove();
 		});
 
 		// close Window
 		$(document).on('click', '#cartClose', function(){
+						
 				$('#popupWindow').html('');
+				
 		});
 }
 
@@ -122,7 +132,8 @@ addToCart(){
 	    	}
 
 	$(document).on("click",".addToCart",function(){
-					    	$("#Qty").show(); 	
+			$("#Qty").show(); 
+
 		    if (typeof(Storage) !== "undefined") {
 		    	
 			    let newSku = this.id.replace(/\D/g, '');

@@ -512,17 +512,14 @@ Menu Section
 /*CartView Pop-up Window*/
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none;
+	position: fixed;
+	z-index: 50;
+	top: 0;
+	height: 100%;
+	overflow: auto;
+	width: 100%;
+	background-color: rgba(0,0,0,0.4);
 }
 
 /* Modal Content */
@@ -535,7 +532,10 @@ Menu Section
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    width: 80%;
+
+	margin-left: 10%;
 }
 
 /* Add Animation */
@@ -569,12 +569,6 @@ Menu Section
     background-color: #5cb85c;
     color: white;
     font-size: 3vw;
-}
-
-.modal-body {
-	
-	//padding: 2px 16px;
-
 }
 
 .popImg{

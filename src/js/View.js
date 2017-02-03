@@ -34,6 +34,7 @@ export default class View{
 		</div>`;	
 		
 		}
+		// create new object for this
 				$("#productList").append(output);
 				// owl.data('owl-Carousel').addItem(output);
 				//owl.reinit();	
@@ -68,22 +69,26 @@ generateQuickView(productsArray){
 		$(document).on('click', '.quickViewBtn', function(){
 				
 				let skuNumber = $(this).attr("id").replace(/\D/g, '');
-				for(let i = 0; i < productsArr.length; i++){
-					if(skuNumber == productsArr[i].sku){
 
-						 quickViewString =`<div id="popupWindow" class="modal-content">
-												<img class="popImg" id="img" src="${productsArr[i].image}">
-												<h3>${productsArr[i].modelNumber}</h3>
-												<p>${productsArr[i].manufacturer}</p>
-												<p>${productsArr[i].width}</p>
-												<p>${productsArr[i].color}</p>
-												<p>${productsArr[i].regularPrice}</p>
-												<button>Add To Cart</button>
-												<h3 id="longDescription">${productsArr[i].longDescription}</h3>
-											</div>`;
-							break;
-					}
+				function quickViewFilter(item) {
+					return item.sku == skuNumber;
 				}
+
+				let quickViewItem = productsArr.filter(quickViewFilter)[0];
+
+				console.log(quickViewItem);
+				quickViewString =`<div id="popupWindow" class="modal-content">
+												<img class="popImg" id="img" src="${quickViewItem.image}">
+												<h3>${quickViewItem.modelNumber}</h3>
+												<p>${quickViewItem.manufacturer}</p>
+												<p>${quickViewItem.width}</p>
+												<p>${quickViewItem.color}</p>
+												<p>${quickViewItem.regularPrice}</p>
+												<button>Add To Cart</button>
+												<h3 id="longDescription">${quickViewItem.longDescription}</h3>
+											</div>`;
+
+
 				$('#quickViewWindow').show();
 				$('#quickViewContent').append(quickViewString);
 		});
