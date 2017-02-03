@@ -10,7 +10,8 @@ constructor(productsArray, theApp){
 
 generateCartView(e) {
 	let productString = '';
-	
+	let total = 0;
+
 	for(let i = 0; i < sessionStorage.length; i++){
 		
 		let sku = sessionStorage.key(i);
@@ -18,6 +19,10 @@ generateCartView(e) {
 		for(let j = 0; j < this.productsArray.length; j++){
 			
 			if(sku == this.productsArray[j].sku){
+
+				let itemTotal = parseInt(sessionStorage.getItem(sku)) * parseInt(this.productsArray[j].regularPrice);
+				total += itemTotal;
+
 				productString = ` <div class="flex modal-body" id="cartList-${this.productsArray[j].sku}">
 								      
 								      <img class="popImg" src="${this.productsArray[i].image}">
@@ -37,14 +42,18 @@ generateCartView(e) {
 								      <div class="shoppingCartColumn">
 								          <button class="updateBtn" id="update-${this.productsArray[j].sku}">Update</button>
 								          <button class="deleteBtn" id="delete-${this.productsArray[j].sku}">Remove</button>
-								      </div>`;
-
+								      </div>
+									 	<div class="shoppingCartColumn">
+											<p>Subtotal: ${itemTotal}</p>
+									 	</div>
+								      `;	
 						$('#popupWindow').append(productString);
 						} // if Statement
 				} // inner Loop		
-
+				$('#checkoutTotal').html("Checkout: " + total);
 		} // outer Loop		
-			
+		
+		
 }
 
 
@@ -63,7 +72,12 @@ deleteAction(object){
 		    console.log("Sorry! No Web Storage support..");
 		}	
 	}
+update_cart_quanity (){
 
+}
+getCurrentTotal (){
+
+}
 updateCart(){
 		// update Button function
 
@@ -77,6 +91,7 @@ updateCart(){
 			let diff = parseInt(newValue) - parseInt(oldValue);
 
 			let productQuantity = sessionStorage.getItem('quantity');
+			
 			sessionStorage.setItem('quantity', parseInt(productQuantity)+diff);
 			sessionStorage.setItem(skuNumber, newValue);
 			$("#Qty").val(sessionStorage.getItem('quantity'));
