@@ -76,7 +76,6 @@ generateQuickView(productsArray){
 
 				let quickViewItem = productsArr.filter(quickViewFilter)[0];
 
-				console.log(quickViewItem);
 				quickViewString =`<div id="popupWindow" class="modal-content">
 												<img class="popImg" id="img" src="${quickViewItem.image}">
 												<h3>${quickViewItem.modelNumber}</h3>
