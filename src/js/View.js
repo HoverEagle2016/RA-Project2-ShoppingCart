@@ -1,7 +1,4 @@
 
-
-
-
 export default class View{
 
 	constructor() {
@@ -11,16 +8,12 @@ export default class View{
 		this.app = null;	
 
 	}
-
-
 	dataPopulate(productsArray, theApp){
-
 		this.app = theApp;
 		
 		let output = "";
 		
-		for(let i = 0; i < productsArray.length; i++) {
-			
+		for(let i = 0; i < productsArray.length; i++) {			
 		output += 
 		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}"> 						
 				<img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}">
@@ -31,14 +24,12 @@ export default class View{
 		  			<button class="quickViewBtn" id="quickView-${productsArray[i].sku}">Quick View</button>
 		  			<button id="insert-${productsArray[i].sku}" class="addToCart">Add to Cart</button>
 		  		</div>	
-		</div>`;	
-		
+		</div>`;			
 		}
 		// create new object for this
 				$("#productList").append(output);
 				// owl.data('owl-Carousel').addItem(output);
-				//owl.reinit();	
-				
+				//owl.reinit();					
 				$('.owl-carousel').owlCarousel({
 			    loop:true,
 			    margin:10,
@@ -62,10 +53,11 @@ export default class View{
 
 
 generateQuickView(productsArray){
-
+		
 		let productsArr = productsArray;
 		let quickViewString = '';
-
+		let app = this.app;
+			
 		$(document).on('click', '.quickViewBtn', function(){
 				
 				let skuNumber = $(this).attr("id").replace(/\D/g, '');
@@ -76,7 +68,6 @@ generateQuickView(productsArray){
 
 				let quickViewItem = productsArr.filter(quickViewFilter)[0];
 
-				console.log(quickViewItem);
 				quickViewString =`<div id="popupWindow" class="modal-content">
 												<img class="popImg" id="img" src="${quickViewItem.image}">
 												<h3>${quickViewItem.modelNumber}</h3>
@@ -84,13 +75,17 @@ generateQuickView(productsArray){
 												<p>${quickViewItem.width}</p>
 												<p>${quickViewItem.color}</p>
 												<p>${quickViewItem.regularPrice}</p>
-												<button>Add To Cart</button>
+												<button id="quickViewAdd-${quickViewItem.sku}">Add To Cart</button>
 												<h3 id="longDescription">${quickViewItem.longDescription}</h3>
 											</div>`;
 
 
 				$('#quickViewWindow').show();
 				$('#quickViewContent').append(quickViewString);
+				app.shoppingCart.addToCart(`#quickViewAdd-${quickViewItem.sku}`);
+				$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
+					alert("You have successfully add the item into your cart!");
+				});
 		});
 
 		$(document).on('click','#quickViewClose', function(){
@@ -101,14 +96,6 @@ generateQuickView(productsArray){
 		});
 
 }
-
-
-
-
-
-
-
-
 
 
 
