@@ -22,9 +22,10 @@ export default class App {
 
 	// Populate data into the products section
 	productsPopulate(productsArray,theApp) {
-		this.view.dataPopulate(productsArray);
+		this.view.dataPopulate(productsArray, theApp);
 		this.productsArray = productsArray;	
 		this.initShoppingCart();
+		
 	}
 
 	initShoppingCart(){	

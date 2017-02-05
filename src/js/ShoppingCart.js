@@ -4,7 +4,7 @@ constructor(productsArray, theApp){
 	this.productsArray = productsArray;
 	this.theApp = theApp;
 	
-	this.addToCart();
+	this.addToCart(".addToCart");
 	this.updateCart();
 }
 
@@ -112,7 +112,6 @@ updateCart(){
 			$('#checkoutTotal').html("Checkout: " + updateTotal);
 			this.total = updateTotal;
 			
-
 			$(`#cartList-${skuNumber}`).remove();
 		});
 
@@ -124,14 +123,15 @@ updateCart(){
 		});
 }
 
-addToCart(){
+
+addToCart(target){
 
 	if(sessionStorage.getItem('quantity') > 0){
 					$("#Qty").show();
 	    		$("#Qty").val(sessionStorage.getItem('quantity'));	
 	    	}
 
-	$(document).on("click",".addToCart",function(){
+	$(document).on("click",target,function(){
 			$("#Qty").show(); 
 
 		    if (typeof(Storage) !== "undefined") {
