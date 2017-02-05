@@ -84,6 +84,7 @@ generateQuickView(productsArray){
 				$('#quickViewContent').append(quickViewString);
 				app.shoppingCart.addToCart(`#quickViewAdd-${quickViewItem.sku}`);
 				$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
+					console.log('test');
 					alert("You have successfully add the item into your cart!");
 				});
 		});

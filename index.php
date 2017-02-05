@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
  <head>
  	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -10,18 +10,14 @@
  	<link rel="stylesheet" type="text/css" href="build/app.css">
 	<script src="https://use.fontawesome.com/b6d7953a77.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="src/js/owl.carousel.min.js"></script>  	
-	
-	<!-- <script type="text/javascript" src="src/js/DataParse.js"></script> -->
-	
+	<script type="text/javascript" src="src/js/owl.carousel.min.js"></script>  		
 	<script src="build/bundle.js"></script>
-	
 	<title>ALoha</title>
  </head>
  <body>
 	  <header class="position-fixed flex flex-wrap">
 			<div class= "logoWidth">
-				<img class="width-med margin-logo" src="../../assets/images/aloha-logo.svg" alt="img">
+				<img class="width-med margin-logo" src="assets/images/aloha-logo.svg" alt="img">
 			</div>
 	  		<div class="flex menu menuWidth menuOrder">
 	  			<p class="menuItem text-center">ABOUT</p>
@@ -30,7 +26,7 @@
 	  			<p class="menuItem text-center">UPDATES</p>
 	  		</div>
 	  		<div class="logoWidth position-rel">
-		  		<img id="cart" class="cartImg position-abs width-sml" src="../../assets/images/cart-icon.svg" alt="check-out cart">
+		  		<img id="cart" class="cartImg position-abs width-sml" src="assets/images/cart-icon.svg" alt="check-out cart">
 		  		<input id="Qty" class="position-abs cartQty background-red color-white text-center" type="text" value=0>
 	  		</div>
 	  </header>
@@ -48,7 +44,7 @@
 	  </section>
 
 	<!-- Pop-Up Window section -->
-		<div id="cartWindow" class="modal">
+	<div id="cartWindow" class="modal">
 			<div class="modal-content">
 			    <div class="modal-header">
 			      <span id="cartClose" class="close">&times;</span>
@@ -58,10 +54,40 @@
 				
 			</div>
 		    <div class="modal-footer">
-		      	<h3 id="checkoutTotal"></h3>
+		      <h3 id="Total"></h3>
+				<!-- <?php
+				require_once('vendor/autoload.php');
+				$stripe = array(
+				  'secret_key'      => 'sk_test_3BK8aL9hi5qaLUsL7sZ0oITy',
+				  'publishable_key' => 'pk_test_WVr4zCSUPcYE2ZLAXJYlqp3D'
+				  );
+				\Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+				  $charge = \Stripe\Charge::create(array(
+				    'source'     => $_POST['stripeToken'],
+				    'amount'   => 53500,
+				    'currency' => 'usd'
+				  ));
+				  echo "<h1>You have paid Jeremy! Thanks for your payment!</h1>"; 
+				}
+				else
+				{ ?>
+				  <form action="index.php" method="POST">
+				  Checkout:
+				    <script
+				      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				      data-key="<?php echo $stripe['publishable_key']; ?>"
+				      data-description="Best Buy Checkout"
+				      data-amount="53500">
+				    </script>
+				  	</form>
+				<?php
+				}
+				?> -->
 			</div>
 		</div>
-	    </div>
+	</div>
 
     <!-- quickViewWindow -->
 	    <div id="quickViewWindow" class="modal">

@@ -7,29 +7,7 @@ Font Familes
 .font-med {
 	font-size: 2.5rem;
 }
-/*@font-face {
-	font-family: raleWay;
-	src: url(../assets/fonts/Raleway-Light.ttf);
-}*/
-/*@font-face {
-	font-family: playfairBI;
-	src: url(../assets/fonts/PlayfairDisplay-BoldItalic.otf);	
-}*/
-/*@font-face {
-	font-family: RalewayI;
-	src: url(../assets/fonts/Raleway-MediumItalic.ttf);
-}*/
-									// @font-face {
-									// 	font-family: PlayfairI;
-									// 	src: url(../assets/fonts/PlayfairDisplay-Italic.otf);
-									// }
-									// @font-face {
-									// 	font-family: Playfair;
-									// 	src: url(../assets/fonts/PlayfairDisplay-Regular.otf);
-									// }
-/*.font-Raleway {
-	font-family: Raleway;
-}*/
+
 .font-PlayfairI {
 	font-family: PlayfairI;
 }
@@ -79,9 +57,7 @@ Spacing Options
 .margin-logo {
 	margin: 4%;
 }
-/*.margin-left {
-	margin-left: 25%;
-}*/
+
 /************ 
 Text and paragraph arrangement
 *************/
@@ -230,7 +206,7 @@ Banner Section
 *************/
 .banner {
 	clear: both;
-	background: linear-gradient(rgba(0,0,0,0.4), transparent), url("../../assets/images/banner.jpg") repeat-x;
+	background: linear-gradient(rgba(0,0,0,0.4), transparent), url("../assets/images/banner.jpg") repeat-x;
 	background-size: contain, 20% 85%, cover;
 	min-height: 90vh;
 }
@@ -238,27 +214,27 @@ Banner Section
 Category Section
 *************/
 	.mensDiv{
-	background:url(../../assets/images/cell-category.jpg);
+	background:url(../assets/images/cell-category.jpg);
 	}
 
 	.trendsDiv {
-	background:url(../../assets/images/desktop-category.jpg);
+	background:url(../assets/images/desktop-category.jpg);
 	}
 
 	.glassDiv{
-	background:url(../../assets/images/home-audio-category.jpg);
+	background:url(../assets/images/home-audio-category.jpg);
 	}
 
 	.saleDiv {
-	background:url(../../assets/images/laptop-category.jpg);
+	background:url(../assets/images/laptop-category.jpg);
 	}
 
 	.bagsDiv {
-	background:url(../../assets/images/tablet-category.jpg);
+	background:url(../assets/images/tablet-category.jpg);
 	}
 
 	.womenDiv{
-	background:url(../../assets/images/tv-category.jpg);
+	background:url(../assets/images/tv-category.jpg);
 	}
 	.itemLrg{
 		width: 49.7%;
@@ -312,7 +288,7 @@ max-width: 100%;
 Subscription Section
 *************/ 
 .subscription {
-	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3), transparent), url(../../assets/images/music.jpg);	
+	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3), transparent), url(../assets/images/music.jpg);	
 	padding: 5%;
 	background-size: cover;
 	background-position: bottom;	

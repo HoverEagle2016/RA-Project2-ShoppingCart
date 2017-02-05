@@ -32,7 +32,6 @@ generateCartView(e) {
 									  	<p>modelNumber:${this.productsArray[j].modelNumber}</p>
 								      </div>
 								      <div class="shoppingCartColumn">
-								        
 								        <input type="number" min="1" type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
 								      </div>
 
@@ -50,7 +49,7 @@ generateCartView(e) {
 						} // if Statement
 				} // inner Loop		
 
-				$('#checkoutTotal').html("Checkout: " + total);
+				$('#Total').html("Total: " + total);
 		} // outer Loop				
 		
 }
@@ -80,8 +79,9 @@ updateCart(){
 			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
 
 			// Total update
-			let newTotal = parseInt($("#checkoutTotal").html().slice(9)) + diffSub;			
-			$('#checkoutTotal').html("Checkout: " + newTotal);
+			let newTotal = parseInt($("#Total").html().slice(6)) + diffSub;			
+			$('#Total').html("Total: " + newTotal);
+			console.log(newTotal);
 			this.total = newTotal;
 			
 		});
@@ -108,8 +108,8 @@ updateCart(){
 			// use str.replace instead of slice
 			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));			
 			let changedPrice = itemPrice * removedQuantity;			
-			let updateTotal = parseInt($("#checkoutTotal").html().slice(9)) - changedPrice;
-			$('#checkoutTotal').html("Checkout: " + updateTotal);
+			let updateTotal = parseInt($("#Total").html().slice(6)) - changedPrice;
+			$('#Total').html("Total: " + updateTotal);
 			this.total = updateTotal;
 			
 			$(`#cartList-${skuNumber}`).remove();
