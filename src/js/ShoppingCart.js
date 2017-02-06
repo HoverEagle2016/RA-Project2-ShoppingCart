@@ -48,8 +48,8 @@ generateCartView(e) {
 						$('#popupWindow').append(productString);
 						} // if Statement
 				} // inner Loop		
-
-				$('#Total').html("Total: " + total);
+				
+				$('#total').html("Total: " + total);
 		} // outer Loop				
 		
 }
@@ -79,8 +79,8 @@ updateCart(){
 			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
 
 			// Total update
-			let newTotal = parseInt($("#Total").html().slice(6)) + diffSub;			
-			$('#Total').html("Total: " + newTotal);
+			let newTotal = parseInt($("#total").html().slice(6)) + diffSub;			
+			$('#total').html("Total: " + newTotal);
 			console.log(newTotal);
 			this.total = newTotal;
 			
@@ -108,8 +108,8 @@ updateCart(){
 			// use str.replace instead of slice
 			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));			
 			let changedPrice = itemPrice * removedQuantity;			
-			let updateTotal = parseInt($("#Total").html().slice(6)) - changedPrice;
-			$('#Total').html("Total: " + updateTotal);
+			let updateTotal = parseInt($("#total").html().slice(6)) - changedPrice;
+			$('#total').html("Total: " + updateTotal);
 			this.total = updateTotal;
 			
 			$(`#cartList-${skuNumber}`).remove();

@@ -3,10 +3,6 @@
  <head>
  	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 	
-	<!-- <link rel="stylesheet" type="text/css" href="src/css/_reset.css">
- 	<link rel="stylesheet" type="text/css" href="src/css/_style.css">
- 	<link rel="stylesheet" type="text/css" href="src/css/_owl.carousel.min.css">
- 	<link rel="stylesheet" type="text/css" href="src/css/_owl.theme.default.min.css"> -->
  	<link rel="stylesheet" type="text/css" href="build/app.css">
 	<script src="https://use.fontawesome.com/b6d7953a77.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -54,37 +50,10 @@
 				
 			</div>
 		    <div class="modal-footer">
-		      <h3 id="Total"></h3>
-				<!-- <?php
-				require_once('vendor/autoload.php');
-				$stripe = array(
-				  'secret_key'      => 'sk_test_3BK8aL9hi5qaLUsL7sZ0oITy',
-				  'publishable_key' => 'pk_test_WVr4zCSUPcYE2ZLAXJYlqp3D'
-				  );
-				\Stripe\Stripe::setApiKey($stripe['secret_key']);
-
-				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				  $charge = \Stripe\Charge::create(array(
-				    'source'     => $_POST['stripeToken'],
-				    'amount'   => 53500,
-				    'currency' => 'usd'
-				  ));
-				  echo "<h1>You have paid Jeremy! Thanks for your payment!</h1>"; 
-				}
-				else
-				{ ?>
-				  <form action="index.php" method="POST">
-				  Checkout:
-				    <script
-				      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-				      data-key="<?php echo $stripe['publishable_key']; ?>"
-				      data-description="Best Buy Checkout"
-				      data-amount="53500">
-				    </script>
-				  	</form>
-				<?php
-				}
-				?> -->
+		        <h3 id="total"></h3>
+		    	<a href="charge.html">
+		    		<h3> Checkout</h3>
+		    	</a>  					   	
 			</div>
 		</div>
 	</div>

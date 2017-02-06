@@ -557,6 +557,8 @@ Menu Section
     background-color: #5cb85c;
     color: white;
     font-size: 3vw;
+    display: flex;
+	justify-content: space-between;
 }
 
 .shoppingCartColumn {
