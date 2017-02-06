@@ -2,6 +2,7 @@
   require_once('./config.php');
 
   $token  = $_POST['stripeToken'];
+  $total = $_POST['total'];
 
   // $customer = \Stripe\Customer::create(array(
   //     'email' => 'customer@example.com',
@@ -9,11 +10,12 @@
   // ));
 
   $charge = \Stripe\Charge::create(array(
-      'customer' => $customer->id,
-      'amount'   => 5000,
+      'source'     => $_POST['stripeToken'],
+      // 'customer' => $customer->id,
+      'amount'   => $total,
       'currency' => 'usd'
   ));
 
-  echo '<h1>Successfully charged $50.00!</h1>';
+  echo '<h1>Successfully charged $'. $total . '!</h1>';
   echo '<a href="index.html"> Go back to home page.</a>'
 ?>

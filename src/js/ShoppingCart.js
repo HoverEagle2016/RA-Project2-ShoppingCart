@@ -50,6 +50,7 @@ generateCartView(e) {
 				} // inner Loop		
 				
 				$('#total').html("Total: " + total);
+				$('#chekoutPrice').val(total);
 		} // outer Loop				
 		
 }
@@ -81,7 +82,7 @@ updateCart(){
 			// Total update
 			let newTotal = parseInt($("#total").html().slice(6)) + diffSub;			
 			$('#total').html("Total: " + newTotal);
-			console.log(newTotal);
+			$('#chekoutPrice').val(newTotal);
 			this.total = newTotal;
 			
 		});
@@ -110,6 +111,7 @@ updateCart(){
 			let changedPrice = itemPrice * removedQuantity;			
 			let updateTotal = parseInt($("#total").html().slice(6)) - changedPrice;
 			$('#total').html("Total: " + updateTotal);
+			$('#chekoutPrice').val(updateTotal);
 			this.total = updateTotal;
 			
 			$(`#cartList-${skuNumber}`).remove();

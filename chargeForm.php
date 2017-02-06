@@ -1,3 +1,9 @@
+<?php
+
+$total = $_POST['total'];
+
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -39,6 +45,14 @@
     <label>
       <span>Billing Postal Code</span>
       <input value="12332" type="text" size="6" data-stripe="address_zip">
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Total:</span>
+      <!-- <P value=><?php echo $total?> </P> -->
+      <input type="text" size="6" name="total" value=<?php echo $total?>>
     </label>
   </div>
 
