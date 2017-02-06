@@ -21,42 +21,61 @@ $total = $_POST['total'];
   <div class="form-row">
     <label>
       <span>Card Number</span>
-      <input value="4242424242424242" type="text" size="20" data-stripe="number">
+      <input type="text" size="20" data-stripe="number">
     </label>
   </div>
 
   <div class="form-row">
     <label>
       <span>Expiration (MM/YY)</span>
-      <input value="12" type="text" size="2" data-stripe="exp_month">
+      <input type="text" size="2" data-stripe="exp_month">
     </label>
     <span> / </span>
-    <input value="20" type="text" size="2" data-stripe="exp_year">
+    <input type="text" size="2" data-stripe="exp_year">
   </div>
 
   <div class="form-row">
     <label>
       <span>CVC</span>
-      <input value="242" type="text" size="4" data-stripe="cvc">
+      <input type="text" size="4" data-stripe="cvc">
     </label>
   </div>
 
   <div class="form-row">
     <label>
       <span>Billing Postal Code</span>
-      <input value="12332" type="text" size="6" data-stripe="address_zip">
+      <input type="text" size="6" data-stripe="address_zip">
     </label>
   </div>
 
   <div class="form-row">
     <label>
-      <span>Total:</span>
-      <!-- <P value=><?php echo $total?> </P> -->
-      <input type="text" size="6" name="total" value=<?php echo $total?>>
+      <input type="hidden" size="6" name="total" value=<?php echo $total?>>
     </label>
   </div>
 
   <input type="submit" class="submit" value="Submit Payment">
 </form>
+<br>
+<a href="https://stripe.com/docs/testing">Available Stripe Test Card Numbers</a>
+</br>
+<ul>
+  <li>4242424242424242  Visa</li> </br>
+  <li>4000056655665556  Visa (debit)</li></br>
+  <li>5555555555554444  Mastercard</li></br>
+  <li>5200828282828210  Mastercard (debit)</li></br>
+  <li>5105105105105100  Mastercard (prepaid)</li></br>
+  <li>378282246310005   American Express</li></br>
+  <li>371449635398431   American Express</li></br>
+  <li>6011111111111117  Discover</li></br>
+  <li>6011000990139424  Discover</li></br>
+  <li>30569309025904    Diners Club</li></br>
+  <li>38520000023237    Diners Club</li></br>
+  <li>3530111333300000  JCB</li></br>
+  <li>3566002020360505  JCB</li></br>
+  <li>4242424242424242  Visa</li></br>
+  <li>4242424242424242  Visa</li></br>
+</ul>
+
 </body>
 </html>
