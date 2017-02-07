@@ -514,17 +514,6 @@ Menu Section
 	margin-left: 10%;
 }
 
-/* Add Animation */
-// @-webkit-keyframes animatetop {
-//     from {top:-300px; opacity:0} 
-//     to {top:0; opacity:1}
-// }
-
-// @keyframes animatetop {
-//     from {top:-300px; opacity:0}
-//     to {top:0; opacity:1}
-// }
-
 /* The Close Button */
 .close {
     color: red;
@@ -570,6 +559,9 @@ Menu Section
 	align-items: center;
 }
 
+#Qty {
+	display: none;
+}
 
 
 

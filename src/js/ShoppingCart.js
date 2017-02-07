@@ -49,10 +49,13 @@ generateCartView(e) {
 						} // if Statement
 				} // inner Loop		
 				
-				$('#total').html("Total: " + total);
-				$('#chekoutPrice').val(total);
 		} // outer Loop				
+		$('#total').html("Total: " + total);
+		$('#chekoutPrice').val(total);
 		
+		$('#checkoutSubmit').click(function(){
+					sessionStorage.removeItem('quantity');
+				});
 }
 
 updateCart(){
@@ -73,14 +76,14 @@ updateCart(){
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 			
 			//subTotal update
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, '');
 			let newSub = itemPrice * newValue;
-			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().slice(9));
+			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().replace(/\D/g, '');
 			let diffSub = newSub - oldSub;
 			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
 
 			// Total update
-			let newTotal = parseInt($("#total").html().slice(6)) + diffSub;			
+			let newTotal = parseInt($("#total").html().replace(/\D/g, '') + diffSub;			
 			$('#total').html("Total: " + newTotal);
 			$('#chekoutPrice').val(newTotal);
 			this.total = newTotal;
@@ -106,10 +109,10 @@ updateCart(){
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 			
 			//update Total 
-			// use str.replace instead of slice
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));			
+			
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, '');			
 			let changedPrice = itemPrice * removedQuantity;			
-			let updateTotal = parseInt($("#total").html().slice(6)) - changedPrice;
+			let updateTotal = parseInt($("#total").html().replace(/\D/g, '') - changedPrice;
 			$('#total').html("Total: " + updateTotal);
 			$('#chekoutPrice').val(updateTotal);
 			this.total = updateTotal;
@@ -118,10 +121,8 @@ updateCart(){
 		});
 
 		// close Window
-		$(document).on('click', '#cartClose', function(){
-						
+		$(document).on('click', '#cartClose', function(){		
 				$('#popupWindow').html('');
-				
 		});
 }
 

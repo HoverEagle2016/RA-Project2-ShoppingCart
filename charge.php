@@ -17,5 +17,6 @@
   ));
 
   echo '<h1>Successfully charged $'. $total . '!</h1>';
-  echo '<a href="index.html"> Go back to home page.</a>'
+  echo '<a href="index.html"> Go back to home page.</a>';
+  
 ?>

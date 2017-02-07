@@ -2,9 +2,6 @@ import BestBuyWebService from './BestBuyWebService';
 import View from './View';
 import ShoppingCart from './ShoppingCart';
 
-// in css
-$("document").ready(function(){  $("#Qty").hide();  });
-
  
 export default class App {
 
