@@ -6,13 +6,11 @@ export default class View{
 		this.productString = null;
 		this.categoryString = null;
 		this.app = null;	
-
 	}
 	dataPopulate(productsArray, theApp){
 		this.app = theApp;
-		
-		let output = "";
-		
+				
+		let output = "";		
 		for(let i = 0; i < productsArray.length; i++) {			
 		output += 
 		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}"> 						
@@ -84,6 +82,7 @@ generateQuickView(productsArray){
 				$('#quickViewContent').append(quickViewString);
 				app.shoppingCart.addToCart(`#quickViewAdd-${quickViewItem.sku}`);
 				$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
+					console.log('test');
 					alert("You have successfully add the item into your cart!");
 				});
 		});

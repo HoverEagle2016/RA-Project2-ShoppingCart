@@ -32,7 +32,6 @@ generateCartView(e) {
 									  	<p>modelNumber:${this.productsArray[j].modelNumber}</p>
 								      </div>
 								      <div class="shoppingCartColumn">
-								        
 								        <input type="number" min="1" type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
 								      </div>
 
@@ -49,10 +48,14 @@ generateCartView(e) {
 						$('#popupWindow').append(productString);
 						} // if Statement
 				} // inner Loop		
-
-				$('#checkoutTotal').html("Checkout: " + total);
+				
 		} // outer Loop				
+		$('#total').html("Total: " + total);
+		$('#chekoutPrice').val(total);
 		
+		$('#checkoutSubmit').click(function(){
+					sessionStorage.removeItem('quantity');
+				});
 }
 
 updateCart(){
@@ -73,15 +76,16 @@ updateCart(){
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 			
 			//subTotal update
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, '');
 			let newSub = itemPrice * newValue;
-			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().slice(9));
+			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().replace(/\D/g, '');
 			let diffSub = newSub - oldSub;
 			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
 
 			// Total update
-			let newTotal = parseInt($("#checkoutTotal").html().slice(9)) + diffSub;			
-			$('#checkoutTotal').html("Checkout: " + newTotal);
+			let newTotal = parseInt($("#total").html().replace(/\D/g, '') + diffSub;			
+			$('#total').html("Total: " + newTotal);
+			$('#chekoutPrice').val(newTotal);
 			this.total = newTotal;
 			
 		});
@@ -105,21 +109,20 @@ updateCart(){
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 			
 			//update Total 
-			// use str.replace instead of slice
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().slice(6));			
+			
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, '');			
 			let changedPrice = itemPrice * removedQuantity;			
-			let updateTotal = parseInt($("#checkoutTotal").html().slice(9)) - changedPrice;
-			$('#checkoutTotal').html("Checkout: " + updateTotal);
+			let updateTotal = parseInt($("#total").html().replace(/\D/g, '') - changedPrice;
+			$('#total').html("Total: " + updateTotal);
+			$('#chekoutPrice').val(updateTotal);
 			this.total = updateTotal;
 			
 			$(`#cartList-${skuNumber}`).remove();
 		});
 
 		// close Window
-		$(document).on('click', '#cartClose', function(){
-						
+		$(document).on('click', '#cartClose', function(){		
 				$('#popupWindow').html('');
-				
 		});
 }
 

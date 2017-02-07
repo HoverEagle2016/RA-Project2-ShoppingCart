@@ -1,27 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
  <head>
  	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 	
-	<!-- <link rel="stylesheet" type="text/css" href="src/css/_reset.css">
- 	<link rel="stylesheet" type="text/css" href="src/css/_style.css">
- 	<link rel="stylesheet" type="text/css" href="src/css/_owl.carousel.min.css">
- 	<link rel="stylesheet" type="text/css" href="src/css/_owl.theme.default.min.css"> -->
  	<link rel="stylesheet" type="text/css" href="build/app.css">
 	<script src="https://use.fontawesome.com/b6d7953a77.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="src/js/owl.carousel.min.js"></script>  	
-	
-	<!-- <script type="text/javascript" src="src/js/DataParse.js"></script> -->
-	
+	<script type="text/javascript" src="src/js/owl.carousel.min.js"></script>  		
 	<script src="build/bundle.js"></script>
-	
 	<title>ALoha</title>
  </head>
  <body>
 	  <header class="position-fixed flex flex-wrap">
 			<div class= "logoWidth">
-				<img class="width-med margin-logo" src="../../assets/images/aloha-logo.svg" alt="img">
+				<img class="width-med margin-logo" src="assets/images/aloha-logo.svg" alt="img">
 			</div>
 	  		<div class="flex menu menuWidth menuOrder">
 	  			<p class="menuItem text-center">ABOUT</p>
@@ -30,7 +22,7 @@
 	  			<p class="menuItem text-center">UPDATES</p>
 	  		</div>
 	  		<div class="logoWidth position-rel">
-		  		<img id="cart" class="cartImg position-abs width-sml" src="../../assets/images/cart-icon.svg" alt="check-out cart">
+		  		<img id="cart" class="cartImg position-abs width-sml" src="assets/images/cart-icon.svg" alt="check-out cart">
 		  		<input id="Qty" class="position-abs cartQty background-red color-white text-center" type="text" value=0>
 	  		</div>
 	  </header>
@@ -48,7 +40,7 @@
 	  </section>
 
 	<!-- Pop-Up Window section -->
-		<div id="cartWindow" class="modal">
+	<div id="cartWindow" class="modal">
 			<div class="modal-content">
 			    <div class="modal-header">
 			      <span id="cartClose" class="close">&times;</span>
@@ -58,10 +50,15 @@
 				
 			</div>
 		    <div class="modal-footer">
-		      	<h3 id="checkoutTotal"></h3>
+		        <h3 id="total"></h3>
+		        <form action="chargeForm.php" method="POST">
+		        	<input id="chekoutPrice" type="hidden" name="total" >
+		        	<input id="checkoutSubmit" type="submit" name="checkout" value="checkout">
+		        </form>
+		    						   	
 			</div>
 		</div>
-	    </div>
+	</div>
 
     <!-- quickViewWindow -->
 	    <div id="quickViewWindow" class="modal">
@@ -98,26 +95,26 @@
 		 <div class="category flex flex-column color-white">
 			<div class="men flex flex-wrap">
 				<div class="mensDiv category-background flex flex-center itemLrg itemMargin">
-					<h3>MEN'S</h3>
+					<h3>CELL</h3>
 				</div>
 				<div class="trendsDiv category-background flex flex-center itemSml itemMargin">
-					<h3>TRENDS</h3>
+					<h3>DESKTOP</h3>
 				</div>
 				<div class="glassDiv category-background flex flex-center itemSml itemMargin">
-					<h3>GLASSES</h3>
+					<h3>HOME-AUDIO</h3>
 				</div>
 			</div>
 			<div class="women flex flex-wrap">
 				<div class="saleDiv category-background flex flex-center itemSml itemMargin">
-					<h3>SALE</h3>
+					<h3>LAPTOP</h3>
 				</div>
 
 				<div class="bagsDiv category-background flex flex-center itemSml itemMargin">
-					<h3>BAGS</h3>
+					<h3>TABLET</h3>
 				</div>
 
 				<div class="womenDiv category-background flex flex-center itemLrg itemMargin">
-					<h3>WOMEN'S</h3>
+					<h3>TV</h3>
 				</div>
 			</div>
 		</div>
