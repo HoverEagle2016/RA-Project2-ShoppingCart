@@ -76,14 +76,14 @@ updateCart(){
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 			
 			//subTotal update
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, '');
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, ''));
 			let newSub = itemPrice * newValue;
-			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().replace(/\D/g, '');
+			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().replace(/\D/g, ''));
 			let diffSub = newSub - oldSub;
 			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
 
 			// Total update
-			let newTotal = parseInt($("#total").html().replace(/\D/g, '') + diffSub;			
+			let newTotal = parseInt($("#total").html().replace(/\D/g, '')) + diffSub;			
 			$('#total').html("Total: " + newTotal);
 			$('#chekoutPrice').val(newTotal);
 			this.total = newTotal;
@@ -110,9 +110,9 @@ updateCart(){
 			
 			//update Total 
 			
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, '');			
+			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, ''));			
 			let changedPrice = itemPrice * removedQuantity;			
-			let updateTotal = parseInt($("#total").html().replace(/\D/g, '') - changedPrice;
+			let updateTotal = parseInt($("#total").html().replace(/\D/g, '')) - changedPrice;
 			$('#total').html("Total: " + updateTotal);
 			$('#chekoutPrice').val(updateTotal);
 			this.total = updateTotal;

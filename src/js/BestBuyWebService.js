@@ -3,8 +3,11 @@ export default class BestBuyWebService {
 
 	constructor(){
 		this.JSONData = null;
+		this.baseURL = "https://api.bestbuy.com/v1/products((categoryPath.id=";
+		this.defaultCat = "abcat0502000";
+		this.endURL = "))?apiKey=8ccddf4rtjz5k5btqam84qak&format=json";
+		this.url = this.baseURL + this.defaultCat + this.endURL;
 	}
-
 
 
 	processResults(theApp){
@@ -22,12 +25,16 @@ export default class BestBuyWebService {
 		return onResults;
 }
 
-	 getData(theApp){
+	 getData(theApp, catId){
 		let serviceChannel = new XMLHttpRequest();
 		serviceChannel.addEventListener("readystatechange", this.processResults(theApp), false);
 		//let url = "https://api.bestbuy.com/v1/products((categoryPath.id=abcat0502000))?apiKey=" + "hvyYhEddqhvgs985eqvYEZQa" + "&format=json";
-		let url = "https://api.bestbuy.com/v1/products((categoryPath.id=abcat0502000))?apiKey=8ccddf4rtjz5k5btqam84qak&format=json";
-		serviceChannel.open("GET", url, true);
+		
+		if(catId !== null) {
+			this.url = this.baseURL + catId + this.endURL;
+		}
+		
+		serviceChannel.open("GET", this.url, true);
 		serviceChannel.send();
 		
 	}

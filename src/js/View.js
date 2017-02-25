@@ -26,8 +26,8 @@ export default class View{
 		}
 		// create new object for this
 				$("#productList").append(output);
-				// owl.data('owl-Carousel').addItem(output);
-				//owl.reinit();					
+				// owl.data('.owl-Carousel').addItem(output);
+								
 				$('.owl-carousel').owlCarousel({
 			    loop:true,
 			    margin:10,
@@ -42,7 +42,7 @@ export default class View{
 			        1000:{
 			            items:4
 			        }
-			    }
+			    }, 
 			    });
 				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');	
 
@@ -82,7 +82,6 @@ generateQuickView(productsArray){
 				$('#quickViewContent').append(quickViewString);
 				app.shoppingCart.addToCart(`#quickViewAdd-${quickViewItem.sku}`);
 				$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
-					console.log('test');
 					alert("You have successfully add the item into your cart!");
 				});
 		});

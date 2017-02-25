@@ -9,12 +9,26 @@ export default class App {
 		 this.productsArray = null;
 		 this.initBestBuyService();
 		 this.view = new View();
-		 this.total = 0;	 
+		 this.total = 0;	
 	}
 
 	initBestBuyService() {
 		this.bbs = new BestBuyWebService();
-		this.bbs.getData(this);		
+		this.bbs.getData(this, null);	
+		this.changeCategory();
+	}
+
+
+	changeCategory(){
+
+			$(document).on('click', '#homeAudio',{theApp:this}, function(event){
+			event.data.theApp.bbs.getData(event.data.theApp, "pcmcat241600050001");
+			$("#productList").html("");
+
+
+
+
+		});
 	}
 
 	// Populate data into the products section
@@ -25,8 +39,7 @@ export default class App {
 		
 	}
 
-	initShoppingCart(){	
-		
+	initShoppingCart(){			
 		this.shoppingCart = new ShoppingCart(this.productsArray, this);
 
 		$(document).on('click', '#cart', {theApp:this}, function(event){
@@ -36,19 +49,19 @@ export default class App {
 			} else {
 				$('#cartWindow').show();
 				event.data.theApp.shoppingCart.generateCartView();
+				
 			}	
 		});
 
 		$(document).on('click', '#cartClose', function(){
-			$('#cartWindow').hide();
-			
-		});
+			$('#cartWindow').hide();		
 		
+		});	
 	}
-
-
 }
 
+
+	
 
 
 
