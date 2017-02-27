@@ -25,7 +25,7 @@ export default class View{
 		</div>`;			
 		}
 		// create new object for this
-				$("#productList").append(output);
+				$("#productList").html(output);
 				// owl.data('.owl-Carousel').addItem(output);
 								
 				$('.owl-carousel').owlCarousel({

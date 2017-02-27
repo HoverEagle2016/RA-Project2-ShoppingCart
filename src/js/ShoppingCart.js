@@ -128,7 +128,7 @@ updateCart(){
 
 
 addToCart(target){
-
+	
 	if(sessionStorage.getItem('quantity') > 0){
 					$("#Qty").show();
 	    		$("#Qty").val(sessionStorage.getItem('quantity'));	
@@ -136,7 +136,7 @@ addToCart(target){
 
 	$(document).on("click",target,function(){
 			$("#Qty").show(); 
-
+			console.log(target);
 		    if (typeof(Storage) !== "undefined") {
 		    	
 			    let newSku = this.id.replace(/\D/g, '');

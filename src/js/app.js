@@ -6,10 +6,12 @@ import ShoppingCart from './ShoppingCart';
 export default class App {
 
 	constructor() {
-		 this.productsArray = null;
-		 this.initBestBuyService();
-		 this.view = new View();
-		 this.total = 0;	
+
+		this.dataObject = {};
+		this.productsArray = null;
+	 	this.initBestBuyService();
+	 	this.view = new View();
+	 	this.total = 0;	
 	}
 
 	initBestBuyService() {
@@ -20,13 +22,9 @@ export default class App {
 
 
 	changeCategory(){
-
 			$(document).on('click', '#homeAudio',{theApp:this}, function(event){
 			event.data.theApp.bbs.getData(event.data.theApp, "pcmcat241600050001");
-			$("#productList").html("");
-
-
-
+			// $("#productList").hide();
 
 		});
 	}
