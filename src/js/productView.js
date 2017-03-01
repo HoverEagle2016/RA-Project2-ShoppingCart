@@ -1,5 +1,5 @@
 
-export default class View{
+export default class ProductView{
 
 	constructor() {
 		this.productsArray = null;
@@ -7,9 +7,8 @@ export default class View{
 		this.categoryString = null;
 		this.app = null;	
 	}
-	dataPopulate(productsArray, theApp){
-		this.app = theApp;
-				
+	dataPopulate(productsArray){
+				// console.log(productsArray);
 		let output = "";		
 		for(let i = 0; i < productsArray.length; i++) {			
 		output += 

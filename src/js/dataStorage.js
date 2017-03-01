@@ -3,7 +3,7 @@ export default class DataStorage{
 
 	constructor(){
 			this.categoryURL = {
-			"DEFAULT": "abcat0502000",
+			"LAPTOP": "abcat0502000",
 			"HOME_AUDIO": "pcmcat241600050001",
 			"TV":"abcat0101000",
 			"TABLET": "pcmcat209000050006",
@@ -11,7 +11,7 @@ export default class DataStorage{
 			"CELL": "pcmcat209400050001"
 			};
 			this.dataObject = {
-                "DEFAULT": [],
+                "LAPTOP": [],
                 "HOME_AUDIO": [],
                 "TV": [],
                 "TABLET": [],

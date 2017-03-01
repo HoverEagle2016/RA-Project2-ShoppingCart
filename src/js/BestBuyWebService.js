@@ -23,11 +23,11 @@ export default class BestBuyWebService {
 			
 			this.JSONData = JSON.parse(e.target.responseText);
 			theApp.productsArray = this.JSONData.products;		
-			theApp.productsPopulate(theApp.productsArray, theApp);
+		//	theApp.productsPopulate(theApp.productsArray, theApp);
 /**************************NEW DATA MODEL************************************/
 			
 			for(let prod of this.JSONData.products){
-				theApp.data.dataObject[category].push(new Product(
+				theApp.dataStorage.dataObject[category].push(new Product(
 					prod.name,
 					prod.sku,
 					prod.regularPrice,
@@ -36,14 +36,12 @@ export default class BestBuyWebService {
 					prod.modelNumber,
 					prod.width,
 					prod.color
-				))
-			}
-                // console.log(theApp.data.dataObject);
-			// theApp.dataObject.default = this.JSONData.products;
+				));
+				}             			
 		}
 	}; 
 
-		return onResults;
+	return onResults;
 }
 
 	 getData(theApp, catURL, cat){
