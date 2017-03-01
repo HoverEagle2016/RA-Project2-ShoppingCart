@@ -136,7 +136,7 @@ addToCart(target){
 
 	$(document).on("click",target,function(){
 			$("#Qty").show(); 
-			console.log(target);
+			
 		    if (typeof(Storage) !== "undefined") {
 		    	
 			    let newSku = this.id.replace(/\D/g, '');
