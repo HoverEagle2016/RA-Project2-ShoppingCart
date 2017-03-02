@@ -35,7 +35,8 @@ export default class BestBuyWebService {
 					prod.manufacturer,
 					prod.modelNumber,
 					prod.width,
-					prod.color
+					prod.color,
+					prod.longDescription
 				));
 				}             			
 		}

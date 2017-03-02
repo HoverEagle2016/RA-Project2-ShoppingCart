@@ -1,56 +1,66 @@
+
 export default class ShoppingCart {
 
 constructor(productsArray, theApp){
 	this.productsArray = productsArray;
-	this.theApp = theApp;
 	
 	this.addToCart(".addToCart");
 	this.updateCart();
+	
+	this.shoppingCartData = theApp.dataStorage.dataObject;
 }
 
 generateCartView(e) {
 	let productString = '';
 	let total = 0;
-	for(let i = 0; i < sessionStorage.length; i++){
 		
+	for(let key in this.shoppingCartData) {
+		
+		let singleCategory = this.shoppingCartData[key];
+		
+		for(let i = 0; i < sessionStorage.length; i++){
+			
 		let sku = sessionStorage.key(i);
 		
-		for(let j = 0; j < this.productsArray.length; j++){
+			for(let j = 0; j < singleCategory.length; j++){
+				
+				if(sku == singleCategory[j].sku){
+
+					let itemTotal = parseInt(sessionStorage.getItem(sku)) * parseFloat(singleCategory[j].regularPrice);
+					
+					total += itemTotal;
+
+					productString = ` <div class="flex modal-body" id="cartList-${singleCategory[j].sku}">
+									      
+									      <img class="popImg" src="${singleCategory[j].image}">
+
+									      <div class="shoppingCartColumn">
+											<p>manufacturer:${singleCategory[j].manufacturer}</p>
+										  	<p>modelNumber:${singleCategory[j].modelNumber}</p>
+									      </div>
+									      <div class="shoppingCartColumn">
+									        <input type="number" min="1" type="text" value=${sessionStorage.getItem(sku)} id="input-${singleCategory[j].sku}">
+									      </div>
+
+									      <p id="price-${singleCategory[j].sku}" class="shoppingCartColumn">price:${singleCategory[j].regularPrice}</p>
+
+									      <div class="shoppingCartColumn">
+									          <button class="updateBtn" id="update-${singleCategory[j].sku}">Update</button>
+									          <button class="deleteBtn" id="delete-${singleCategory[j].sku}">Remove</button>
+									      </div>
+										 	<div class="shoppingCartColumn">
+												<p id="subtotal-${singleCategory[j].sku}">Subtotal: ${itemTotal}</p>
+										 	</div>
+									      `;	
+							$('#popupWindow').append(productString);
+							} // if Statement
+					} // inner Loop		
+				
+		} // outer Loop
+
+	} // Loop for all the categories
 			
-			if(sku == this.productsArray[j].sku){
-
-				let itemTotal = parseInt(sessionStorage.getItem(sku)) * parseInt(this.productsArray[j].regularPrice);
-				
-				total += itemTotal;
-
-				productString = ` <div class="flex modal-body" id="cartList-${this.productsArray[j].sku}">
-								      
-								      <img class="popImg" src="${this.productsArray[j].image}">
-
-								      <div class="shoppingCartColumn">
-										<p>manufacturer:${this.productsArray[j].manufacturer}</p>
-									  	<p>modelNumber:${this.productsArray[j].modelNumber}</p>
-								      </div>
-								      <div class="shoppingCartColumn">
-								        <input type="number" min="1" type="text" value=${sessionStorage.getItem(sku)} id="input-${this.productsArray[j].sku}">
-								      </div>
-
-								      <p id="price-${this.productsArray[j].sku}" class="shoppingCartColumn">price:${this.productsArray[j].regularPrice}</p>
-
-								      <div class="shoppingCartColumn">
-								          <button class="updateBtn" id="update-${this.productsArray[j].sku}">Update</button>
-								          <button class="deleteBtn" id="delete-${this.productsArray[j].sku}">Remove</button>
-								      </div>
-									 	<div class="shoppingCartColumn">
-											<p id="subtotal-${this.productsArray[j].sku}">Subtotal: ${itemTotal}</p>
-									 	</div>
-								      `;	
-						$('#popupWindow').append(productString);
-						} // if Statement
-				} // inner Loop		
-				
-		} // outer Loop				
-		$('#total').html("Total: " + total);
+		$('#total').html("Total: " + total.toFixed(2));
 		$('#chekoutPrice').val(total);
 		
 		$('#checkoutSubmit').click(function(){
@@ -76,15 +86,17 @@ updateCart(){
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 			
 			//subTotal update
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, ''));
+			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().slice(-6));
 			let newSub = itemPrice * newValue;
-			let oldSub = parseInt($(`#subtotal-${skuNumber}`).html().replace(/\D/g, ''));
+			console.log(newSub);
+			let oldSub = parseFloat($(`#subtotal-${skuNumber}`).html().slice(10));
 			let diffSub = newSub - oldSub;
 			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
 
 			// Total update
-			let newTotal = parseInt($("#total").html().replace(/\D/g, '')) + diffSub;			
-			$('#total').html("Total: " + newTotal);
+			let newTotal = parseFloat($("#total").html().slice(7)) + parseFloat(diffSub);	
+			console.log();
+			$('#total').html("Total: " + newTotal.toFixed(2));
 			$('#chekoutPrice').val(newTotal);
 			this.total = newTotal;
 			

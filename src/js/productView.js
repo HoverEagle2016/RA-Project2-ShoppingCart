@@ -7,8 +7,9 @@ export default class ProductView{
 		this.categoryString = null;
 		this.app = null;	
 	}
-	dataPopulate(productsArray){
+	dataPopulate(productsArray, theApp){
 				// console.log(productsArray);
+				this.app = theApp;
 		let output = "";		
 		for(let i = 0; i < productsArray.length; i++) {			
 		output += 
@@ -27,22 +28,7 @@ export default class ProductView{
 				$("#productList").html(output);
 				// owl.data('.owl-Carousel').addItem(output);
 								
-				$('.owl-carousel').owlCarousel({
-			    loop:true,
-			    margin:10,
-			    nav:true,
-			    responsive:{
-			        0:{
-			            items:1
-			        },
-			        600:{
-			            items:2
-			        },
-			        1000:{
-			            items:4
-			        }
-			    }, 
-			    });
+			
 				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');	
 
 		this.generateQuickView(productsArray);
@@ -79,6 +65,8 @@ generateQuickView(productsArray){
 
 				$('#quickViewWindow').show();
 				$('#quickViewContent').append(quickViewString);
+
+				console.log(app);
 				app.shoppingCart.addToCart(`#quickViewAdd-${quickViewItem.sku}`);
 				$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
 					alert("You have successfully add the item into your cart!");

@@ -21,8 +21,7 @@ export default class App {
 		this.bbs = new BestBuyWebService();
 		for(let key in this.dataStorage.categoryURL){
 			// console.log(this.data.categoryURL[key]);
-			this.bbs.getData(this, this.dataStorage.categoryURL[key], key);
-			
+			this.bbs.getData(this, this.dataStorage.categoryURL[key], key);		
 		}
 		
 		this.changeCategory();
@@ -38,14 +37,37 @@ export default class App {
 			// $("#productList").hide();
 			// console.log(event.data.theApp);
 			// console.log(this.id);
-			event.data.theApp.productsPopulate(event.data.theApp.dataStorage.dataObject[this.id]);
+			event.data.theApp.productsPopulate(event.data.theApp.dataStorage.dataObject[this.id],
+														event.data.theApp);
 			// console.log(event.data.theApp.dataStorage.dataObject[this.id]);
+
+
+				$('.owl-carousel').owlCarousel({
+			    loop:true,
+			    margin:10,
+			    nav:true,
+			    responsive:{
+			        0:{
+			            items:1
+			        },
+			        600:{
+			            items:2
+			        },
+			        1000:{
+			            items:4
+			        }
+			    }, 
+			    });
+
+
+
+
 		});
 	}
 
 	// Populate data into the products section
-	productsPopulate(productsArray) {
-		this.productView.dataPopulate(productsArray);
+	productsPopulate(productsArray, theApp) {
+		this.productView.dataPopulate(productsArray, theApp);
 		
 		this.initShoppingCart();
 		
