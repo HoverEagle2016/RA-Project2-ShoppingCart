@@ -12,21 +12,14 @@ export default class App {
 		this.dataStorage = new DataStorage();
 	 	this.initBestBuyService();
 	 	this.productView = new ProductView();
-
-	 // $(document).on('click', '#cart', this.showingCartView());
-	 	
 	}
 
 	initBestBuyService() {
 		this.bbs = new BestBuyWebService();
 		for(let key in this.dataStorage.categoryURL){
-
 			this.bbs.getData(this, this.dataStorage.categoryURL[key], key);	
-
-		}
-		
+		}		
 		this.changeCategory();
-
 	}
 
 
@@ -56,22 +49,8 @@ export default class App {
 			    });
 
 		});
-	}
 
-	// Populate data into the products section
-	productsPopulate(productsArray, theApp) {
-		this.initShoppingCart();
-		this.productView.dataPopulate(productsArray, theApp);			
-	}
-
-	initShoppingCart(){			
-		
-		this.shoppingCart = new ShoppingCart(this.productsArray, this);	
-		$(document).on('click', '#cartClose', function(){
-			$('#cartWindow').hide();				
-		});	
-
-		$(document).on('click', '#cart', {theApp:this}, function(event){
+			$(document).on('click', '#cart', {theApp:this}, function(event){
 				
 			if(sessionStorage.getItem('quantity') === null){
 				return;
@@ -80,11 +59,19 @@ export default class App {
 				event.data.theApp.shoppingCart.generateCartView();				
 			}	
 		});
-		
 	}
 
-	showingCartView(){
-		
+	// Populate data into the products section
+	productsPopulate(productsArray, theApp) {
+		this.initShoppingCart();
+		this.productView.dataPopulate(productsArray, theApp);			
+	}
+
+	initShoppingCart(){					
+		this.shoppingCart = new ShoppingCart(this.productsArray, this);	
+		$(document).on('click', '#cartClose', function(){
+			$('#cartWindow').hide();				
+		});	
 	}
 
 } // Close of the app
