@@ -9,11 +9,8 @@ export default class BestBuyWebService {
 		this.defaultCat = "abcat0502000";
 		this.endURL = "))?apiKey=8ccddf4rtjz5k5btqam84qak&format=json";
 		this.url = this.baseURL + this.defaultCat + this.endURL;
-/**************************NEW DATA MODEL************************************/
-		
-		
-		
-	}
+/**************************NEW DATA MODEL************************************/			
+}
 
 
 	processResults(theApp, category){
@@ -41,7 +38,6 @@ export default class BestBuyWebService {
 				}             			
 		}
 	}; 
-
 	return onResults;
 }
 

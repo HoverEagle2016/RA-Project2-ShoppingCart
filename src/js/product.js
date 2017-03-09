@@ -11,7 +11,5 @@ export default class Product {
 		this.width = width;
 		this.color = color;
 		this.longDescription = longDescription;
-	}
-
-		
+	}		
 }

@@ -6,13 +6,23 @@ export default class ProductView{
 		this.productString = null;
 		this.categoryString = null;
 		this.app = null;	
+		this.output = "";	
 	}
+
 	dataPopulate(productsArray, theApp){
-				// console.log(productsArray);
+				
 				this.app = theApp;
-		let output = "";		
-		for(let i = 0; i < productsArray.length; i++) {			
-		output += 
+		this.output ="";
+
+
+		for(let i = 0; i < productsArray.length; i++) {	
+		// clear previous divs
+		// clear previous events associated with buttons
+		// non jquery
+		// document.getElementById(`insert-${productsArray[i].sku}`).removeEventListener("click",)
+		// $(`.product${i}`).html("");
+
+		this.output += 
 		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}"> 						
 				<img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}">
 		  		<p class="manufacturer">"${productsArray[i].manufacturer}"</p>
@@ -25,9 +35,8 @@ export default class ProductView{
 		</div>`;			
 		}
 		// create new object for this
-				$("#productList").html(output);
-				// owl.data('.owl-Carousel').addItem(output);
-								
+				$("#productList").html(this.output);
+				// owl.data('.owl-Carousel').addItem(output);		
 			
 				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');	
 
@@ -66,7 +75,6 @@ generateQuickView(productsArray){
 				$('#quickViewWindow').show();
 				$('#quickViewContent').append(quickViewString);
 
-				console.log(app);
 				app.shoppingCart.addToCart(`#quickViewAdd-${quickViewItem.sku}`);
 				$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
 					alert("You have successfully add the item into your cart!");
