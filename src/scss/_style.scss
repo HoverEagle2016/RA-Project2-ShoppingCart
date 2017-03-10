@@ -71,7 +71,7 @@ Text and paragraph arrangement
 	font-size: 1.2rem;
 	text-align: center;
 	padding: 2%;
-	font-family: raleway;
+	
 }
 .lineHeight-lrg {
 	line-height: 2.5rem;
@@ -178,15 +178,17 @@ Header Section
 
 .menu{
 	padding: 2% 9%;
-    font-size: 1rem;
-    color: red;
+  font-size: 1rem;
+  color: red;
+  display: flex;
+  font-family: 'Baloo Bhaina', cursive;
 }
 
 .menuOrder {
 	order:0;
 	}
 .menuItem{
-	width: 25%;
+	flex-basis: 25%;
 	}
 
 .cartImg {
@@ -206,8 +208,8 @@ Banner Section
 *************/
 .banner {
 	clear: both;
-	background: linear-gradient(rgba(0,0,0,0.4), transparent), url("../assets/images/banner.jpg") repeat-x;
-	background-size: contain, 20% 85%, cover;
+	background: linear-gradient(rgba(0,0,0,0.4), transparent), url("../assets/images/banner.jpg") no-repeat;
+	background-size: cover;
 	min-height: 90vh;
 }
 /************ 
@@ -268,10 +270,10 @@ Product Section
 	font-size: 11px;
 }
 .productImg {
-max-width: 100%;  
+height: 30vh;
 }
 .productName {
-	font-size: 20px;
+	font-size: 1.2rem;
 	color: red;
 }
 .productPrice{
@@ -566,6 +568,9 @@ Menu Section
 h3.categories {
 	cursor: pointer; 
 	color: orange;
+	font-family: 'Ranga', cursive;
+	font-size: 2rem;
+
 }
 
 

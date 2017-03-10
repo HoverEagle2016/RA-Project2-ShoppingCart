@@ -30,8 +30,6 @@ export default class ProductView{
 				$("#productList").html(this.output);
 				// owl.data('.owl-Carousel').addItem(output);	
 
-
-
 				$('.owl-carousel').owlCarousel({
 			    loop:true,
 			    margin:10,
@@ -49,87 +47,63 @@ export default class ProductView{
 			    }, 
 			    });
 
-
-
-				
 				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');	
-		this.generateQuickView(productsArray);
-	}
+		//console.log(productsArray)
+		let quickViewBtns = document.getElementsByClassName("quickViewBtn");
+
+		for(let btn of quickViewBtns){
+			btn.addEventListener('click', this.generateQuickView(productsArray), false);
+		}		
+}
+
 
 
 generateQuickView(productsArray){
+					
+	let returnFunction = function(e) {
+			
+		let skuNumber = $(this).attr("id").replace(/\D/g, '');
+		let quickViewItem = null;
 		
-		let productsArr = productsArray;
-		let quickViewString = '';
-		let app = this.app;
-			
-		$(document).on('click', '.quickViewBtn', {productsArr: productsArr}, function(event){
-				console.log("quickView");
-				console.log(event.data.productsArr);
-				let skuNumber = $(this).attr("id").replace(/\D/g, '');
-				let quickViewItem = null;
-				function quickViewFilter(item) {
-					return item.sku == skuNumber;
-				}
+		function quickViewFilter(item) {
+			return item.sku == skuNumber;
+		}
 
-				for (let product of productsArr){
-					console.log(product.sku);
-					console.log("skuNumber=" + skuNumber);
-					if (product.sku == skuNumber){
-						quickViewItem = product;
-					}
-				}
+		for (let product of productsArray){
+			if (product.sku == skuNumber){
+				 quickViewItem = product;
+			}
+		}
 
-				console.log(quickViewItem);
-				quickViewString =`<div id="popupWindow" class="modal-content">
-												<img class="popImg" id="img" src="${quickViewItem.image}">
-												<h3>${quickViewItem.modelNumber}</h3>
-												<p>${quickViewItem.manufacturer}</p>
-												<p>${quickViewItem.width}</p>
-												<p>${quickViewItem.color}</p>
-												<p>${quickViewItem.regularPrice}</p>
-												<button class="addToCart" id="quickViewAdd-${quickViewItem.sku}">Add To Cart</button>
-												<h3 id="longDescription">${quickViewItem.longDescription}</h3>
-											</div>`;
+	let quickViewString =`<div id="popupWindow" class="modal-content">
+										<img class="popImg" id="img" src="${quickViewItem.image}">
+										<h3>${quickViewItem.modelNumber}</h3>
+										<p>${quickViewItem.manufacturer}</p>
+										<p>${quickViewItem.width}</p>
+										<p>${quickViewItem.color}</p>
+										<p>${quickViewItem.regularPrice}</p>
+										<button class="addToCart" id="quickViewAdd-${quickViewItem.sku}">Add To Cart</button>
+										<h3 id="longDescription">${quickViewItem.longDescription}</h3>
+									</div>`;
 
-
-				$('#quickViewWindow').show();
-				$('#quickViewContent').append(quickViewString);
-
-				// app.shoppingCart.addToCart(`#quickViewAdd-${quickViewItem.sku}`);
-				$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
-					alert("You have successfully add the item into your cart!");
-				});
+		$('#quickViewWindow').show();
+		$('#quickViewContent').append(quickViewString);
+	
+		$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
+			alert("You have successfully add the item into your cart!");
 		});
-
-		$(document).on('click','#quickViewClose', function(){
-			
+	};// returnFunction ends
+		
+		$(document).on('click','#quickViewClose', function(){	
 			$('#quickViewWindow').hide();
-			$('#quickViewContent').html('');
-			
+			$('#quickViewContent').html('');	
 		});
 
-}
+		return returnFunction;
+
+	} // end of generateQuickView()
+
+} // end of productView class
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 

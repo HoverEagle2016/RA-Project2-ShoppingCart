@@ -36,6 +36,7 @@ export default class App {
 
 	changeCategory(){
 			$(document).on('click', '.categories',{theApp:this}, function(event){		
+			
 			event.data.theApp.productsPopulate(event.data.theApp.dataStorage.dataObject[this.id],
 														event.data.theApp);
 		});
