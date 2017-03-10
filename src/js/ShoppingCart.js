@@ -3,10 +3,7 @@ export default class ShoppingCart {
 
 constructor(productsArray, theApp){
 	this.productsArray = productsArray;
-	
 	this.showCartQty();
-	this.updateCart();
-	
 	this.shoppingCartData = theApp.dataStorage.dataObject;
 }
 
@@ -27,7 +24,7 @@ generateCartView(e) {
 				if(sku == singleCategory[j].sku){
 
 					let itemTotal = parseInt(sessionStorage.getItem(sku)) * parseFloat(singleCategory[j].regularPrice);
-					
+					itemTotal = parseFloat(itemTotal.toFixed(2));
 					total += itemTotal;
 
 					productString = ` <div class="flex modal-body" id="cartList-${singleCategory[j].sku}">
@@ -60,81 +57,11 @@ generateCartView(e) {
 
 	} // Loop for all the categories
 		$('#total').html("Total: " + total.toFixed(2));
-		$('#chekoutPrice').val(total);
+		$('#chekoutPrice').val(total.toFixed(2));
 		
 		$('#checkoutSubmit').click(function(){
 					sessionStorage.removeItem('quantity');
 				});
-}
-
-updateCart(){
-		// update Button function
-
-		$(document).on("click",".updateBtn",function(){
-			let skuNumber = $(this).attr("id").replace(/\D/g, '');
-			
-			// update the quantiy property in session storage
-			let oldValue = sessionStorage.getItem(skuNumber);
-			let newValue = $(`#input-${skuNumber}`).val();
-			let diff = parseInt(newValue) - parseInt(oldValue);
-
-			let productQuantity = sessionStorage.getItem('quantity');
-			
-			sessionStorage.setItem('quantity', parseInt(productQuantity)+diff);
-			sessionStorage.setItem(skuNumber, newValue);
-			$("#Qty").val(sessionStorage.getItem('quantity'));
-			
-			//subTotal update
-			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().slice(-6));
-			let newSub = itemPrice * newValue;
-			
-			let oldSub = parseFloat($(`#subtotal-${skuNumber}`).html().slice(10));
-			let diffSub = newSub - oldSub;
-			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub);
-
-			// Total update
-			let newTotal = parseFloat($("#total").html().slice(7)) + parseFloat(diffSub);	
-			
-			$('#total').html("Total: " + newTotal.toFixed(2));
-			$('#chekoutPrice').val(newTotal);
-			this.total = newTotal;
-			
-		});
-
-		// delete button function
-		$(document).on("click", '.deleteBtn', function(){
-
-			let skuNumber = $(this).attr("id").replace(/\D/g, '');
-			let removedQuantity = parseInt(sessionStorage.getItem(skuNumber));
-			let productQuantity = parseInt(sessionStorage.getItem('quantity'));
-
-			sessionStorage.setItem('quantity', productQuantity-removedQuantity);
-			sessionStorage.removeItem(skuNumber);
-
-			if(sessionStorage.getItem('quantity') == 0){
-				sessionStorage.removeItem('quantity');
-				$("#Qty").hide();
-				$("#cartWindow").hide();
-			}
-
-			$("#Qty").val(sessionStorage.getItem('quantity'));
-			
-			//update Total 
-			
-			let itemPrice = parseInt($(`#price-${skuNumber}`).html().replace(/\D/g, ''));			
-			let changedPrice = itemPrice * removedQuantity;			
-			let updateTotal = parseInt($("#total").html().replace(/\D/g, '')) - changedPrice;
-			$('#total').html("Total: " + updateTotal);
-			$('#chekoutPrice').val(updateTotal);
-			this.total = updateTotal;
-			
-			$(`#cartList-${skuNumber}`).remove();
-		});
-
-		// close Window
-		$(document).on('click', '#cartClose', function(){		
-				$('#popupWindow').empty();
-		});
 }
 
 		showCartQty(){
@@ -142,13 +69,13 @@ updateCart(){
 									$("#Qty").show();
 					    		$("#Qty").val(sessionStorage.getItem('quantity'));	
 					    	}
-		}
+				}
 
 }
 		
 
-	$(document).on('click', '.addToCart', function(){
-		console.log('test');
+$(document).on('click', '.addToCart', function(){
+		
 		$("#Qty").show(); 
 		
 		    if (typeof(Storage) !== "undefined") {
@@ -182,5 +109,72 @@ updateCart(){
 	});
 
 
+
+$(document).on("click",".updateBtn",function(){
+			let skuNumber = $(this).attr("id").replace(/\D/g, '');
+			
+			// update the quantiy property in session storage
+			let oldValue = sessionStorage.getItem(skuNumber);
+			let newValue = $(`#input-${skuNumber}`).val();
+			let diff = parseInt(newValue) - parseInt(oldValue);
+
+			let productQuantity = sessionStorage.getItem('quantity');
+			
+			sessionStorage.setItem('quantity', parseInt(productQuantity)+diff);
+			sessionStorage.setItem(skuNumber, newValue);
+			$("#Qty").val(sessionStorage.getItem('quantity'));
+			
+			//subTotal update
+			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().substring(6));
+			let newSub = itemPrice * newValue;
+			let oldSub = parseFloat($(`#subtotal-${skuNumber}`).html().substring(10));
+			let diffSub = newSub - oldSub;
+			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub.toFixed(2));
+
+			// Total update
+			let newTotal = parseFloat($("#total").html().slice(7)) + parseFloat(diffSub);	
+			
+			$('#total').html("Total: " + newTotal.toFixed(2));
+			$('#chekoutPrice').val(newTotal);
+			this.total = newTotal;
+			
+		});
+
+		// delete button function
+$(document).on("click", '.deleteBtn', function(){
+
+			let skuNumber = $(this).attr("id").replace(/\D/g, '');
+			let removedQuantity = parseInt(sessionStorage.getItem(skuNumber));
+			let productQuantity = parseInt(sessionStorage.getItem('quantity'));
+
+			sessionStorage.setItem('quantity', productQuantity-removedQuantity);
+			sessionStorage.removeItem(skuNumber);
+
+			if(sessionStorage.getItem('quantity') == 0){
+				sessionStorage.removeItem('quantity');
+				$("#Qty").hide();
+				$("#cartWindow").hide();
+			}
+
+			$("#Qty").val(sessionStorage.getItem('quantity'));
+			
+			//update Total 
+			
+
+			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().substring(6));			
+			let changedPrice = itemPrice * removedQuantity;		
+			let updateTotal = parseFloat($("#total").html().substring(6)) - changedPrice;
+			
+			$('#total').html("Total: " + updateTotal.toFixed(2));
+			$('#chekoutPrice').val(updateTotal);
+			this.total = updateTotal;
+			
+			$(`#cartList-${skuNumber}`).remove();
+		});
+
+		// close Window
+$(document).on('click', '#cartClose', function(){		
+				$('#popupWindow').empty();
+		});
 
 	

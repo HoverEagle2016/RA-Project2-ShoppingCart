@@ -16,12 +16,7 @@ export default class ProductView{
 
 
 		for(let i = 0; i < productsArray.length; i++) {	
-		// clear previous divs
-		// clear previous events associated with buttons
-		// non jquery
-		// document.getElementById(`insert-${productsArray[i].sku}`).removeEventListener("click",)
-		// $(`.product${i}`).html("");
-
+		
 		this.output += 
 		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}"> 						
 				<img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}">
@@ -47,6 +42,7 @@ export default class ProductView{
 generateQuickView(productsArray){
 		
 		let productsArr = productsArray;
+		console.log(productsArr);
 		let quickViewString = '';
 		let app = this.app;
 			
