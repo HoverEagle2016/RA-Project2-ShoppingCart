@@ -12,7 +12,7 @@ export default class App {
 		this.dataStorage = new DataStorage();
 	 	this.initBestBuyService();
 	 	this.productView = new ProductView();
-
+	 	this.initSite = true;
 
 	 	$(document).on('click', '#cart', {theApp:this}, function(event){				
 			if(sessionStorage.getItem('quantity') === null){
@@ -22,47 +22,28 @@ export default class App {
 				event.data.theApp.shoppingCart.generateCartView();	
 			}	
 		});
-
 	}
 
 	initBestBuyService() {
 		this.bbs = new BestBuyWebService();
+
 		for(let key in this.dataStorage.categoryURL){
 			this.bbs.getData(this, this.dataStorage.categoryURL[key], key);	
 		}		
-		this.changeCategory();
+		this.changeCategory();		
 	}
 
 
 	changeCategory(){
 			$(document).on('click', '.categories',{theApp:this}, function(event){		
-			event.data.theApp.productView.output = "";
-			$("#productList").html("");
 			event.data.theApp.productsPopulate(event.data.theApp.dataStorage.dataObject[this.id],
 														event.data.theApp);
-
-				$('.owl-carousel').owlCarousel({
-			    loop:true,
-			    margin:10,
-			    nav:true,
-			    responsive:{
-			        0:{
-			            items:1
-			        },
-			        600:{
-			            items:2
-			        },
-			        1000:{
-			            items:4
-			        }
-			    }, 
-			    });
-
 		});
 	}
 
 	// Populate data into the products section
 	productsPopulate(productsArray, theApp) {
+		// $('.owl-carousel').owlCarousel('update');
 		this.initShoppingCart();
 		this.productView.dataPopulate(productsArray, theApp);			
 	}

@@ -70,7 +70,6 @@ generateCartView(e) {
 					    		$("#Qty").val(sessionStorage.getItem('quantity'));	
 					    	}
 				}
-
 }
 		
 
@@ -107,7 +106,6 @@ $(document).on('click', '.addToCart', function(){
 				    console.log("Sorry! No Web Storage support..");
 				}
 	});
-
 
 
 $(document).on("click",".updateBtn",function(){
