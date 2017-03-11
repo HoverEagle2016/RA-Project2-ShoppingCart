@@ -7,9 +7,11 @@ export default class ProductView{
 		this.categoryString = null;
 		this.app = null;	
 		this.output = "";			
+
 	}
 
 	dataPopulate(productsArray, theApp){
+		this.carousel();
 		this.app = theApp;
 		this.output ="";
 		for(let i = 0; i < productsArray.length; i++) {	
@@ -25,37 +27,17 @@ export default class ProductView{
 		  			<button id="insert-${productsArray[i].sku}" class="addToCart">Add to Cart</button>
 		  		</div>	
 		</div>`;			
-		}
-		// create new object for this
+		}		
+				this.carousel();
 				$("#productList").html(this.output);
-				// owl.data('.owl-Carousel').addItem(output);	
-
-				$('.owl-carousel').owlCarousel({
-			    loop:true,
-			    margin:10,
-			    nav:true,
-			    responsive:{
-			        0:{
-			            items:1
-			        },
-			        600:{
-			            items:2
-			        },
-			        1000:{
-			            items:4
-			        }
-			    }, 
-			    });
-
-				// $('.owl-carousel').owlCarousel('add', output).owlCarousel('refresh');	
-		//console.log(productsArray)
+			
+				// $('.owl-carousel').owlCarousel('add', this.output);	
 		let quickViewBtns = document.getElementsByClassName("quickViewBtn");
 
 		for(let btn of quickViewBtns){
 			btn.addEventListener('click', this.generateQuickView(productsArray), false);
 		}		
 }
-
 
 
 generateQuickView(productsArray){
@@ -104,6 +86,34 @@ generateQuickView(productsArray){
 		return returnFunction;
 
 	} // end of generateQuickView()
+
+carousel(){
+		$(document).ready(function(){
+		$('.owl-carousel').owlCarousel({
+
+			    loop:true,
+			    margin:10,
+			    nav:true,
+			    responsive:{
+			        0:{
+			            items:1
+			        },
+			        600:{
+			            items:2
+			        },
+			        1000:{
+			            items:4
+			        }
+			    }, 
+			    });	
+	}); // end of document.ready
+
+				
+} // end of carousel function
+
+
+
+
 
 } // end of productView class
 

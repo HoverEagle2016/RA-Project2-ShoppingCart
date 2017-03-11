@@ -1,0 +1,55 @@
+
+ .chargePage {
+  padding: 60px 0px;
+  background-color: #B2D1E5;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.chargePage input {
+  margin: 1px 0px;
+  padding-left: 3%;
+}
+.chargePage input[type="text"]{
+  display: block;
+  height: 35px;
+  width: 97%;
+  border: none;
+}
+
+.chargePage input[type="submit"]{
+  display: block;
+  height: 45px;
+  width: 100%;
+  border: none;
+  background-color: #3C8DC5;
+  color: #fff;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.chargePage input[type="submit"]:hover{
+  background-color: #6FB7E9;
+  transition: 0.3s ease;
+}
+.chargePage .expiration {
+  display: flex;
+}
+
+.chargePage label span {
+  font-family: monospace;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+
+.chargePage p{
+  text-align: left;
+  line-height: 2rem;
+  font-family: sans-serif;
+}
+
+.chargePage p a{
+  cursor:pointer;
+}

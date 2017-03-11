@@ -16,7 +16,9 @@
       'currency' => 'usd'
   ));
 
-  echo '<h1>Successfully charged $'. $total . '!</h1>';
-  echo '<a href="index.html"> Go back to home page.</a>';
+  $paidAmount = $total/100;
+  
+  echo '<h1>Thank you! You have successfully paid $'. $paidAmount . '!</h1>';
+  echo '<a href="index.html"> More fun stuffs?</a>';
   
 ?>

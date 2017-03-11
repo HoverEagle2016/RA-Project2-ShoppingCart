@@ -44,7 +44,7 @@ export default class App {
 
 	// Populate data into the products section
 	productsPopulate(productsArray, theApp) {
-		// $('.owl-carousel').owlCarousel('update');
+		
 		this.initShoppingCart();
 		this.productView.dataPopulate(productsArray, theApp);			
 	}
