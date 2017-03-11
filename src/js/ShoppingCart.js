@@ -27,26 +27,26 @@ generateCartView(e) {
 					itemTotal = parseFloat(itemTotal.toFixed(2));
 					total += itemTotal;
 
-					productString = ` <div class="flex modal-body" id="cartList-${singleCategory[j].sku}">
-									      
-									      <img class="popImg" src="${singleCategory[j].image}">
-
-									      <div class="shoppingCartColumn">
-											<p>manufacturer:${singleCategory[j].manufacturer}</p>
-										  	<p>modelNumber:${singleCategory[j].modelNumber}</p>
+					productString = `<div class="flex modal-body" id="cartList-${singleCategory[j].sku}">
+									      <div class="shoppingCartColumn image">
+									      <img src="${singleCategory[j].image}">
+												</div>
+									      <div class="shoppingCartColumn metadata">
+												<p>Manufacturer: ${singleCategory[j].manufacturer}</p>
+										  	<p>Model Number: ${singleCategory[j].modelNumber}</p>
 									      </div>
-									      <div class="shoppingCartColumn">
+									      <div class="shoppingCartColumn qty">
 									        <input type="number" min="1" type="text" value=${sessionStorage.getItem(sku)} id="input-${singleCategory[j].sku}">
 									      </div>
 
-									      <p id="price-${singleCategory[j].sku}" class="shoppingCartColumn">price:${singleCategory[j].regularPrice}</p>
+									      <p id="price-${singleCategory[j].sku}" class="shoppingCartColumn price">Price: $${singleCategory[j].regularPrice}</p>
 
-									      <div class="shoppingCartColumn">
+									      <div class="shoppingCartColumn cta">
 									          <button class="updateBtn" id="update-${singleCategory[j].sku}">Update</button>
 									          <button class="deleteBtn" id="delete-${singleCategory[j].sku}">Remove</button>
 									      </div>
-										 	<div class="shoppingCartColumn">
-												<p id="subtotal-${singleCategory[j].sku}">Subtotal: ${itemTotal}</p>
+										 	<div class="shoppingCartColumn sub">
+												<p id="subtotal-${singleCategory[j].sku}">Subtotal: $${itemTotal}</p>
 										 	</div>
 									      `;	
 							$('#popupWindow').append(productString);
@@ -56,8 +56,8 @@ generateCartView(e) {
 		} // outer Loop
 
 	} // Loop for all the categories
-		$('#total').html("Total: " + total.toFixed(2));
-		$('#chekoutPrice').val(total.toFixed(2));
+		$('#total').html("Total: $" + total.toFixed(2));
+		$('#checkoutPrice').val(total.toFixed(2));
 		
 		$('#checkoutSubmit').click(function(){
 					sessionStorage.removeItem('quantity');
@@ -123,17 +123,17 @@ $(document).on("click",".updateBtn",function(){
 			$("#Qty").val(sessionStorage.getItem('quantity'));
 			
 			//subTotal update
-			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().substring(6));
+			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().substring(8));
+
 			let newSub = itemPrice * newValue;
-			let oldSub = parseFloat($(`#subtotal-${skuNumber}`).html().substring(10));
+			let oldSub = parseFloat($(`#subtotal-${skuNumber}`).html().substring(11));
 			let diffSub = newSub - oldSub;
-			$(`#subtotal-${skuNumber}`).html("Subtotal: " + newSub.toFixed(2));
+			$(`#subtotal-${skuNumber}`).html("Subtotal: $" + newSub.toFixed(2));
 
 			// Total update
-			let newTotal = parseFloat($("#total").html().slice(7)) + parseFloat(diffSub);	
-			
-			$('#total').html("Total: " + newTotal.toFixed(2));
-			$('#chekoutPrice').val(newTotal);
+			let newTotal = parseFloat($("#total").html().substring(8)) + parseFloat(diffSub);	
+			$('#total').html("Total: $" + newTotal.toFixed(2));
+			$('#checkoutPrice').val(newTotal);
 			this.total = newTotal;
 			
 		});
@@ -158,13 +158,12 @@ $(document).on("click", '.deleteBtn', function(){
 			
 			//update Total 
 			
-
-			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().substring(6));			
+			let itemPrice = parseFloat($(`#price-${skuNumber}`).html().substring(8));			
 			let changedPrice = itemPrice * removedQuantity;		
-			let updateTotal = parseFloat($("#total").html().substring(6)) - changedPrice;
+			let updateTotal = parseFloat($("#total").html().substring(8)) - changedPrice;
 			
-			$('#total').html("Total: " + updateTotal.toFixed(2));
-			$('#chekoutPrice').val(updateTotal);
+			$('#total').html("Total: $" + updateTotal.toFixed(2));
+			$('#checkoutPrice').val(updateTotal);
 			this.total = updateTotal;
 			
 			$(`#cartList-${skuNumber}`).remove();
