@@ -76,14 +76,16 @@ generateQuickView(productsArray){
 		}
 
 	let quickViewString =`<div id="popupWindow" class="modal-content">
-										<img class="popImg" id="img" src="${quickViewItem.image}">
-										<h3>${quickViewItem.modelNumber}</h3>
-										<p>${quickViewItem.manufacturer}</p>
-										<p>${quickViewItem.width}</p>
-										<p>${quickViewItem.color}</p>
-										<p>${quickViewItem.regularPrice}</p>
+										<div class="popImg"> 
+											<img id="img" src="${quickViewItem.image}">
+										</div>
+										<p><span>Model Number: </span>${quickViewItem.modelNumber}</p>
+										<p class="manufacturer"><span>Manufacturer: </span>${quickViewItem.manufacturer}</p>
+										<p><span>Width: </span>${quickViewItem.width}</p>
+										<p><span>Color: </span>${quickViewItem.color}</p>
+										<p class="price"><span>Price: </span>$${quickViewItem.regularPrice}</p>
 										<button class="addToCart" id="quickViewAdd-${quickViewItem.sku}">Add To Cart</button>
-										<h3 id="longDescription">${quickViewItem.longDescription}</h3>
+										<p class="longDescription" id="longDescription"><span>Description: </span>${quickViewItem.longDescription}</p>
 									</div>`;
 
 		$('#quickViewWindow').show();

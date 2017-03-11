@@ -501,19 +501,11 @@ Menu Section
 }
 
 /* Modal Content */
-.modal-content {
-    
-    background-color: #fefefe;  
-    border: 1px solid #888;
-    
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    width: 80%;
-
+.modal-content {   
+  background-color: #fefefe;  
+  width: 80%;
 	margin-left: 10%;
+	margin-top: 3%;
 }
 
 /* The Close Button */
@@ -522,6 +514,7 @@ Menu Section
     float: right;
     font-size: 28px;
     font-weight: bold;
+
 }
 
 .close:hover,
@@ -536,6 +529,7 @@ Menu Section
     background-color: #003b64;
     color: white;
     font-size: 3vw;
+    font-family: 'Ranga',cursive;
 }
 
 .modal-footer {
@@ -545,6 +539,7 @@ Menu Section
     font-size: 3vw;
     display: flex;
 		justify-content: space-between;
+		font-family: 'Ranga',cursive;
 }
 
 .shoppingCartWindow button,
@@ -612,7 +607,6 @@ Menu Section
 }
 
 .shoppingCartColumn {
-	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -623,7 +617,6 @@ Menu Section
 
 .shoppingCartColumn img{
 	padding-left: 10px;
-	// width: 100%;
 	height: 70%;
 }
 
@@ -654,9 +647,43 @@ button:hover {
 	cursor:pointer;
 }
 
+/************************QUICK VIEW*************************************/
 
+.quickViewWindow .price {
+	font-weight: bolder;
+}
 
+.quickViewWindow p{
+	margin-top: 10px;
+	margin-left: 10px;
+	font-family: sans-serif;
+}
 
+.quickViewWindow p span{
+	font-weight: bolder;
+	font-family: monospace;
+	font-size: 1.2rem;
+}
+
+.quickViewWindow .longDescription {
+	line-height: 1.5rem;
+	color: #b1b1b1;
+	margin-bottom: 10px;
+	clear:right;
+}
+
+.quickViewWindow button {
+	float: right;
+	margin: 10px;
+}
+
+.quickViewWindow .popImg {
+	text-align: center;
+}
+
+.quickViewWindow .close {
+	margin-top: -3%;
+}
 
 
 
