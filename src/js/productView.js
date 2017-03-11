@@ -18,7 +18,7 @@ export default class ProductView{
 		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}"> 						
 				<img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}">
 		  		<p class="manufacturer">"${productsArray[i].manufacturer}"</p>
-		  		<h4 class="productName lineHeight-lrg">${productsArray[i].name}</h4>
+		  		<h4 class="productName lineHeight-regular">${productsArray[i].name}</h4>
 		  		<p class="productPrice">$${productsArray[i].regularPrice}</p>
 		  		<div>
 		  			<button class="quickViewBtn" id="quickView-${productsArray[i].sku}">Quick View</button>

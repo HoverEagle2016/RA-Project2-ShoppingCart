@@ -77,7 +77,7 @@ Text and paragraph arrangement
 	line-height: 2.5rem;
 }
 .lineHeight-regular {
-	line-height: 2rem;
+	line-height: 1.3rem;
 }
 .border-radius {
 	border-radius: 30px;
@@ -273,13 +273,13 @@ Product Section
 height: 30vh;
 }
 .productName {
-	font-size: 1.2rem;
-	color: red;
+	font-size: 15px;
+	color: grey;
 }
 .productPrice{
-	color: grey;
-	font-family: playfairBI;
-	font-size: 12px;
+	color: red;
+	font-weight: bold;
+	font-size: 1.1rem;
 }
 .shopBtn{
 	background-color: black;
@@ -533,18 +533,42 @@ Menu Section
 
 .modal-header {
     padding: 15px 16px;
-    background-color: #5cb85c;
+    background-color: #003b64;
     color: white;
     font-size: 3vw;
 }
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #003b64;
     color: white;
     font-size: 3vw;
     display: flex;
 		justify-content: space-between;
+}
+
+.shoppingCartWindow button,
+.modal-footer input[type=submit] {
+	    background: #fff200;
+	    color: #003b64;
+	    font-weight: bold;
+	    margin-top: 5px;
+	    border-radius: 20px;	    
+}
+
+.modal-footer input[type=submit] {
+	font-size: 1rem;
+	margin-bottom: 8px;
+}
+
+.modal-footer h3{
+	margin-top: 5px;
+}
+
+.shoppingCartWindow button:hover,
+.modal-footer input[type=submit]:hover {
+	color: #003bff;
+	cursor:pointer;
 }
 
 .shoppingCartWindow .image {
@@ -553,6 +577,11 @@ Menu Section
 
 .shoppingCartWindow .metadata{
 	flex-basis: 30%;
+}
+
+.shoppingCartWindow .metadata p{
+	margin-bottom: 10px;
+	font-family: sans-serif;
 }
 
 .shoppingCartWindow .qty{
@@ -566,7 +595,7 @@ Menu Section
 }
 
 .shoppingCartWindow .price{
-	flex-basis: 13%;
+	flex-basis: 15%;
 	font-weight:bolder;
 }
 .shoppingCartWindow .cta{
@@ -610,9 +639,20 @@ h3.categories {
 
 }
 
+/************************GLOBAL*************************************/
 
+ button {
+  background: #fff200;
+  color: #003b64;
+  font-weight: bold;
+  margin-top: 5px;
+  border-radius: 20px;	    
+}
 
-
+button:hover {
+	color: #003bff;
+	cursor:pointer;
+}
 
 
 
