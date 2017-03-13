@@ -5,19 +5,18 @@ export default class ProductView{
 		this.productsArray = null;
 		this.productString = null;
 		this.categoryString = null;
-		this.app = null;	
-		this.output = "";			
-
+		this.app = null;
+		this.output = "";
 	}
 
 	dataPopulate(productsArray, theApp){
-		this.carousel();
+		
 		this.app = theApp;
 		this.output ="";
-		for(let i = 0; i < productsArray.length; i++) {	
-		
-		this.output += 
-		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}"> 						
+		for(let i = 0; i < productsArray.length; i++) {
+
+		this.output +=
+		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}">
 				<img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}">
 		  		<p class="manufacturer">"${productsArray[i].manufacturer}"</p>
 		  		<h4 class="productName lineHeight-regular">${productsArray[i].name}</h4>
@@ -25,28 +24,34 @@ export default class ProductView{
 		  		<div>
 		  			<button class="quickViewBtn" id="quickView-${productsArray[i].sku}">Quick View</button>
 		  			<button id="insert-${productsArray[i].sku}" class="addToCart">Add to Cart</button>
-		  		</div>	
-		</div>`;			
-		}		
-				this.carousel();
+		  		</div>
+		</div>`;
+		}
+				
 				$("#productList").html(this.output);
-			
-				// $('.owl-carousel').owlCarousel('add', this.output);	
-		let quickViewBtns = document.getElementsByClassName("quickViewBtn");
 
+				if( this.app.pageLoaded){
+					this.owlCarousel();
+				}
+				
+				if(!this.app.pageLoaded && this.app !== null) {
+						window.addEventListener('load', this.carouselLoadedwithPage(this.app), false);					
+				}
+				
+		let quickViewBtns = document.getElementsByClassName("quickViewBtn");
 		for(let btn of quickViewBtns){
 			btn.addEventListener('click', this.generateQuickView(productsArray), false);
-		}		
+		}
 }
 
 
 generateQuickView(productsArray){
-					
+
 	let returnFunction = function(e) {
-			
+
 		let skuNumber = $(this).attr("id").replace(/\D/g, '');
 		let quickViewItem = null;
-		
+
 		function quickViewFilter(item) {
 			return item.sku == skuNumber;
 		}
@@ -58,7 +63,7 @@ generateQuickView(productsArray){
 		}
 
 	let quickViewString =`<div id="popupWindow" class="modal-content">
-										<div class="popImg"> 
+										<div class="popImg">
 											<img id="img" src="${quickViewItem.image}">
 										</div>
 										<p><span>Model Number: </span>${quickViewItem.modelNumber}</p>
@@ -72,25 +77,24 @@ generateQuickView(productsArray){
 
 		$('#quickViewWindow').show();
 		$('#quickViewContent').append(quickViewString);
-	
 		$(`#quickViewAdd-${quickViewItem.sku}`).click(function(){
 			alert("You have successfully add the item into your cart!");
 		});
 	};// returnFunction ends
-		
-		$(document).on('click','#quickViewClose', function(){	
-			$('#quickViewWindow').hide();
-			$('#quickViewContent').html('');	
-		});
 
+		$(document).on('click','#quickViewClose', function(){
+			$('#quickViewWindow').hide();
+			$('#quickViewContent').html('');
+		});
 		return returnFunction;
 
 	} // end of generateQuickView()
 
-carousel(){
-		$(document).ready(function(){
-		$('.owl-carousel').owlCarousel({
 
+owlCarousel(){
+
+console.log('carousel');
+	$('.owl-carousel').owlCarousel({
 			    loop:true,
 			    margin:10,
 			    nav:true,
@@ -104,18 +108,52 @@ carousel(){
 			        1000:{
 			            items:4
 			        }
-			    }, 
-			    });	
-	}); // end of document.ready
+			    },
+			    });
+	
+} // end of owlCarousel()
 
-				
-} // end of carousel function
+// reloadStylesheets() {
 
+//    var queryString = '?reload=' + new Date().getTime();
+//    $('link[rel="stylesheet"]').each(function () {
+   		
+//    		if (this.href.indexOf("googleapis")==-1){
+//    			// console.log(this);
+//    			//this.addEventListener('load',function(e){console.log(this.href + ' loaded')},false);
+//        this.href = this.href.replace(/\?.*|$/, queryString);
+//    		}
+//    });
+
+// }
+
+carouselLoadedwithPage(theApp){
+
+  let callBackFunction = function(){
+  	$('.owl-carousel').owlCarousel({
+			    loop:true,
+			    margin:10,
+			    nav:true,
+			    responsive:{
+			        0:{
+			            items:1
+			        },
+			        600:{
+			            items:2
+			        },
+			        1000:{
+			            items:4
+			        }
+			    },
+			    });
+  	theApp.pageLoaded = true;
+  	console.log('hi');
+  }; // end of callBackFunction()
+  
+  return callBackFunction();
+} // end of carouselLoadedwithPage function
 
 
 
 
 } // end of productView class
-
-
-
