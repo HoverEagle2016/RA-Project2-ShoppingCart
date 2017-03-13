@@ -46,17 +46,17 @@ export default class App {
 //   2. The '.owl-carousel' itself has an '.owl-loaded' class attached;
 //   We have to remove that before the new initialization.
 // $('.owl-carousel').html($('.owl-carousel').find('.owl-stage-outer').html()).removeClass('owl-loaded');
-		// $('.owl-carousel').trigger('refresh.owl.carousel');		
+		// $('.owl-carousel').trigger('refresh.owl.carousel');
 			event.data.theApp.productsPopulate(event.data.theApp.dataStorage.dataObject[this.id],
-														event.data.theApp);
+														event.data.theApp, this.id);
 			
 		});
 	}
 
 	// Populate data into the products section
-	productsPopulate(productsArray, theApp) {
+	productsPopulate(productsArray, theApp, category) {
 		this.initShoppingCart();
-		this.productView.dataPopulate(productsArray, theApp);
+		this.productView.dataPopulate(productsArray, theApp, category);
 	}
 
 	initShoppingCart(){

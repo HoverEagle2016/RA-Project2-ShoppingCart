@@ -9,15 +9,15 @@ export default class ProductView{
 		this.output = "";
 	}
 
-	dataPopulate(productsArray, theApp){
+	dataPopulate(productsArray, theApp, category){
 		
 		this.app = theApp;
 		this.output ="";
 		for(let i = 0; i < productsArray.length; i++) {
 
 		this.output +=
-		`<div class="product item text-center product${i}" data-sku="${productsArray[i].sku}">
-				<img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}">
+		`<div class="product product-${category} item text-center product${i}" data-sku="${productsArray[i].sku}">
+				<div class="imgWrapper"><img class="productImg" src="${productsArray[i].image}" alt="${productsArray[i].modelNumber}"></div>
 		  		<p class="manufacturer">"${productsArray[i].manufacturer}"</p>
 		  		<h4 class="productName lineHeight-regular">${productsArray[i].name}</h4>
 		  		<p class="productPrice">$${productsArray[i].regularPrice}</p>
@@ -90,10 +90,8 @@ generateQuickView(productsArray){
 
 	} // end of generateQuickView()
 
-
 owlCarousel(){
 
-console.log('carousel');
 	$('.owl-carousel').owlCarousel({
 			    loop:true,
 			    margin:10,
@@ -147,7 +145,6 @@ carouselLoadedwithPage(theApp){
 			    },
 			    });
   	theApp.pageLoaded = true;
-  	console.log('hi');
   }; // end of callBackFunction()
   
   return callBackFunction();

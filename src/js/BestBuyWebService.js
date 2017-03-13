@@ -41,7 +41,7 @@ export default class BestBuyWebService {
 	
 		
 		if(theApp.initSite && theApp.dataStorage.dataObject.tv.length !== 0 ){
-				theApp.productsPopulate(theApp.dataStorage.dataObject.tv, theApp);
+				theApp.productsPopulate(theApp.dataStorage.dataObject.tv, theApp, "tv");
 				theApp.initSite = false;
 		}	
 	}
