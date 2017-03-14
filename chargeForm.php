@@ -1,6 +1,6 @@
 <?php
 
-$total = $_POST['total'];
+$total = round($_POST['total']);
 
 ?>
 
@@ -12,7 +12,6 @@ $total = $_POST['total'];
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script type="text/javascript" src="checkout.js"></script>
   <link rel="stylesheet" type="text/css" href="build/app.css">
-  <!-- <link rel="stylesheet" type="text/css" href="chargeForm.css"> -->
   <title></title>
 </head>
 

@@ -58,10 +58,6 @@ generateCartView(e) {
 	} // Loop for all the categories
 		$('#total').html("Total: $" + total.toFixed(2));
 		$('#checkoutPrice').val(total.toFixed(2) * 100);
-		
-		$('#checkoutSubmit').click(function(){
-					sessionStorage.clear();
-				});
 }
 
 		showCartQty(){

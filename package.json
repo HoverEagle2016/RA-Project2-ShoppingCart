@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HoverEagle2016/RA-Project2-ShoppingCart.git"
+    "url": "git+https://github.com/JeremyXu555/RA-Project2-ShoppingCart.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HoverEagle2016/RA-Project2-ShoppingCart/issues"
+    "url": "https://github.com/JeremyXu555/RA-Project2-ShoppingCart/issues"
   },
-  "homepage": "https://github.com/HoverEagle2016/RA-Project2-ShoppingCart#readme",
+  "homepage": "https://github.com/JeremyXu555/RA-Project2-ShoppingCart#readme",
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",

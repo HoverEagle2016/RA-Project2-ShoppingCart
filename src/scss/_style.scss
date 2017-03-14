@@ -683,5 +683,22 @@ button:hover {
 	margin-top: -3%;
 }
 
+/*****************THANK YOU***********************/
+.thank-you {
+text-align: center;
+}
+.thank-you h1 {
+font-family: monospace;
+font-size: 2rem;
+margin: 3%;
+}
 
+.thank-you a{
+	font-family: sans-serif;
+	text-decoration: none;
+	color: red;
+	font-weight: bold;
+	margin-top: 5px;
+	font-size: 1.4rem; 
+}
 
